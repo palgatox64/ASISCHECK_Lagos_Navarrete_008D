@@ -1,0 +1,36 @@
+
+
+ion-content {
+  ion-header {
+    ion-toolbar {
+      ion-title {
+        text-align: center;
+      }
+    }
+  }
+
+
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Ocupa el 100% de la altura de la vista */
+    padding: 20px;
+
+
+
+
+    ion-item {
+      margin-bottom: 15px;
+      --highlight-background: yellow;
+    }
+
+
+    ion-button {
+      margin-top: 20px;
+
+    }
+  }
+}
