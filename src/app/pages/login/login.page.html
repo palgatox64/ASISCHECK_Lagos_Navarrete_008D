@@ -4,20 +4,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="login-content">
+  <div class="login-logo">
+    <img src="assets/img/asischecklogo.png" alt="logo">
+  </div>
   <div class="login-container">
     <ion-item>
       <ion-icon class="login-icon" name="person-outline" slot="start"></ion-icon>
       <ion-label></ion-label>
-      <ion-input [(ngModel)]="username" placeholder="Ingrese su usuario" ></ion-input>
+      <ion-input [(ngModel)]="username" [autofocus]="false" placeholder="Ingrese su usuario" ></ion-input>
     </ion-item>
     
     <ion-item>
       <ion-icon class="login-icon" name="lock-closed-outline" slot="start"></ion-icon>
       <ion-label></ion-label>
-      <ion-input type="password" [(ngModel)]="password" placeholder="Ingrese su contraseña"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" [autofocus]="false" auto placeholder="Ingrese su contraseña"></ion-input>
     </ion-item>
     
-    <ion-button expand="block" color="warning" (click)="autenticarLogin()">Ingresar</ion-button>
+    <ion-button expand="block" (click)="autenticarLogin()">Ingresar</ion-button>
+    <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)">Recupérela aquí</a></p>
   </div>
 </ion-content>
