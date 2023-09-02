@@ -9,19 +9,26 @@
     <img src="assets/img/asischecklogo.png" alt="logo">
   </div>
   <div class="login-container">
-    <ion-item>
+    <ion-item class="usuario">
       <ion-icon class="login-icon" name="person-outline" slot="start"></ion-icon>
       <ion-label></ion-label>
       <ion-input [(ngModel)]="username" [autofocus]="false" placeholder="Ingrese su usuario" ></ion-input>
     </ion-item>
     
-    <ion-item>
+    <ion-item class="password">
       <ion-icon class="login-icon" name="lock-closed-outline" slot="start"></ion-icon>
       <ion-label></ion-label>
-      <ion-input type="password" [(ngModel)]="password" [autofocus]="false" auto placeholder="Ingrese su contraseña"></ion-input>
+      <ion-input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" [autofocus]="false" placeholder="Ingrese su contraseña"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
+        <ion-icon class="eye" [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+      </ion-button>
     </ion-item>
     
-    <ion-button expand="block" (click)="autenticarLogin()">Ingresar</ion-button>
+    <ion-button class="submit ion-text-uppercase"  expand="block" (click)="autenticarLogin()">Ingresar</ion-button>
     <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)">Recupérela aquí</a></p>
+
+    <p class="sign-up">¿No dispone de una cuenta? <a href="javascript:void(0)">Regístrese aquí</a> </p>
+
   </div>
+
 </ion-content>

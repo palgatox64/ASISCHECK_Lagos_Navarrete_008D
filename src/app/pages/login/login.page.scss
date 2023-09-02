@@ -1,19 +1,29 @@
 
-
+* {
+  font-family: sans-serif, serif, Arial, Helvetica;
+}
 
 ion-title {
   text-align: center;
 }
 
-.login-logo {
-  position: absolute; /* Establece el logo como posición absoluta */
-  padding-top: 5%;
-  left: 50%; /* Centra horizontalmente el logo */
-  transform: translateX(-50%); /* Centra horizontalmente el logo */
-  text-align: center; /* Alinea el contenido del logo al centro */
-  width: 60%; /* Establece el ancho del logo */
+ion-toolbar.ios {
+  height: 76px; 
 }
 
+.login-logo {
+  position: absolute; 
+  padding-top: 5%;
+  left: 50%; 
+  transform: translateX(-50%); 
+  text-align: center; 
+  width: 60%; 
+
+}
+
+.usuario {
+  margin-top: 20%;
+}
 
 .login-container {
   display: flex;
@@ -23,35 +33,53 @@ ion-title {
   height: 100%;
   padding: 20px;
 
-  
-
 }
 
 
-ion-content {
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 ion-item {
   margin-bottom: 15px;
   --highlight-background: #8277E1ff;
-  
+  width: 105%;
 
 }
 
-ion-button {
+ion-item.ios {
+  margin-bottom: 15px;
+  --highlight-background: #8277E1ff;
+  width: 110%;
+  
+}
+
+ion-item:first-child ion-icon[name='person-outline'] {
+  margin-right: 8px; 
+}
+
+ion-item.password ion-icon[name='lock-closed-outline'] {
+  margin-right: 8px; 
+}
+
+.submit {
   margin-top: 20px;
   --background: #615ACDff;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
 .forgot-password {
   text-align: center;
-  font-size: 85%;
+  font-size: 80%;
+}
+
+.eye {
+  color: gray;
+}
+
+.sign-up {
+  text-align: center;
+  font-size: 80%;
 }
 
 a {

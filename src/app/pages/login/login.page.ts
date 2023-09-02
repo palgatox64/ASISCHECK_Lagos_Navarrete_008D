@@ -10,6 +10,11 @@ export class LoginPage implements OnInit {
 
   username: string = ''; // Variable para el usuario
   password: string = ''; // Variable para la contraseña
+  showPassword: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   constructor(public alertController: AlertController) { } // Inyecta el componente AlertController
 
