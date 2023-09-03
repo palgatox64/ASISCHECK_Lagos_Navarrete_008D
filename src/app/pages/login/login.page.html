@@ -5,9 +5,13 @@
 </ion-header>
 
 <ion-content class="login-content">
-  <div class="login-logo">
-    <img src="assets/img/asischecklogo.png" alt="logo">
+
+  <div class="logo-sup">
+    <p class="logo-pos">
+      <img src="assets/img/asischecklogo.png" alt="logo">
+    </p>
   </div>
+
   <div class="login-container">
     <ion-item class="usuario">
       <ion-icon class="login-icon" name="person-outline" slot="start"></ion-icon>
@@ -25,10 +29,13 @@
     </ion-item>
     
     <ion-button class="submit ion-text-uppercase"  expand="block" (click)="autenticarLogin()">Ingresar</ion-button>
-    <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)">Recupérela aquí</a></p>
+    
+    <div class="links">
+      <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)">Recupérela aquí</a></p>
 
-    <p class="sign-up">¿No dispone de una cuenta? <a href="javascript:void(0)">Regístrese aquí</a> </p>
-
+      <p class="sign-up">¿No dispone de una cuenta? <a href="javascript:void(0)">Regístrese aquí</a> </p>
+    </div>
+    
   </div>
 
 </ion-content>

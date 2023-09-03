@@ -1,77 +1,41 @@
 
-* {
-  font-family: sans-serif, serif, Arial, Helvetica;
-}
-
-ion-title {
-  text-align: center;
-}
 
 ion-toolbar.ios {
   height: 76px; 
 }
 
-.login-logo {
-  position: absolute; 
+
+img {
+  display: block;
+  width: 45%;
+  margin: auto;
+  text-align: center;
   padding-top: 10%;
-  left: 50%; 
-  transform: translateX(-50%); 
-  text-align: center; 
-  width: 50%; 
-
 }
-
-.usuario {
-  margin-top: 30%;
-}
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
-  height: 84vh;
-  padding: 20px;
-
-}
-
-
 
 ion-item {
-  margin-bottom: 15px;
   --highlight-background: #8277E1ff;
-  width: 105%;
 
-}
-
-ion-item.ios {
-  margin-bottom: 15px;
-  --highlight-background: #8277E1ff;
-  width: 110%;
-  
-}
-
-ion-item:first-child ion-icon[name='person-outline'] {
-  margin-right: 8px; 
-}
-
-ion-item.password ion-icon[name='lock-closed-outline'] {
-  margin-right: 8px; 
 }
 
 .submit {
-  margin-top: 20px;
+  margin-top: 5%;
+  margin-bottom: 0;
+  padding: 5%;
   --background: #615ACDff;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
   font-weight: bold;
+}
+
+.links {
+  padding-bottom: 20%;
 }
 
 .forgot-password {
   text-align: center;
   font-size: 80%;
+  padding-bottom: 5%;
 }
+
 
 .eye {
   color: gray;
