@@ -13,16 +13,16 @@ ion-toolbar.ios {
 
 .login-logo {
   position: absolute; 
-  padding-top: 5%;
+  padding-top: 10%;
   left: 50%; 
   transform: translateX(-50%); 
   text-align: center; 
-  width: 60%; 
+  width: 50%; 
 
 }
 
 .usuario {
-  margin-top: 20%;
+  margin-top: 30%;
 }
 
 .login-container {
@@ -30,7 +30,7 @@ ion-toolbar.ios {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  height: 87vh;
+  height: 84vh;
   padding: 20px;
 
 }
