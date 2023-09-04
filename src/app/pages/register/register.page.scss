@@ -1,0 +1,51 @@
+
+
+ion-toolbar.ios {
+    height: 76px; 
+  }
+  
+  
+  img {
+    display: block;
+    width: 45%;
+    margin: auto;
+    text-align: center;
+    padding-top: 10%;
+  }
+  
+  ion-item {
+    --highlight-background: #8277E1ff;
+  
+  }
+  
+  .submit {
+    margin-top: 5%;
+    margin-bottom: 0;
+    padding: 5%;
+    --background: #615ACDff;
+    font-weight: bold;
+  }
+  
+  .links {
+    padding-bottom: 20%;
+  }
+  
+  .forgot-password {
+    text-align: center;
+    font-size: 80%;
+    padding-bottom: 5%;
+  }
+  
+  
+  .eye {
+    color: gray;
+  }
+  
+  .sign-up {
+    text-align: center;
+    font-size: 80%;
+  }
+  
+  a {
+  text-decoration: none;
+  }
