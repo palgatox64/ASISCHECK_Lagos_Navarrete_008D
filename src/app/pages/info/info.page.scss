@@ -6,6 +6,7 @@ ion-toolbar.ios {
   ion-card {
     --background: #5750CCff;
     --color: white;
+    margin-bottom: 10%;
   }
   ion-card-header{
     --background: #5750CCff;
@@ -14,5 +15,17 @@ ion-toolbar.ios {
   ion-card-title{
     --background: #5750CCff;
     --color: white;
+    font-weight: bold;
   }
-  
+  .check{
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+  .checklist{
+    text-align: center;
+    font-weight: bold;
+  }
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
