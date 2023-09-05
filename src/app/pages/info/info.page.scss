@@ -1,0 +1,92 @@
+
+
+ion-toolbar.ios {
+    height: 76px; 
+  }
+  ion-card {
+    --background: #5750CCff;
+    --color: white;
+    margin-bottom: 10%;
+  }
+  ion-card-header{
+    --background: #5750CCff;
+    --color: white;
+  }
+  ion-card-title{
+    --background: #5750CCff;
+    --color: white;
+    font-weight: bolder;
+  }
+  .check{
+    width: 75%;
+    display: block;
+    margin: auto;
+  }
+  .checklist{
+    text-align: center;
+    font-weight: bolder;
+  }
+  .checklistext{
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .qrprofe{
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+  }
+  .qrprofetext{
+    text-align: center;
+    font-weight: bolder;
+  }
+  .qrprofetext1{
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .qrboy{
+    width: 83%;
+    display: block;
+    margin: auto;
+    margin-top: 12%;
+  }
+  .qrboytext{
+    text-align: center;
+    font-weight: bolder;
+  }
+  .qrboytext1{
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .mascarilla{
+    width: 83%;
+    display: block;
+    margin: auto;
+    margin-top: 7%;
+  }
+  .mascarillap{
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-weight: bold;
+    color: #9086EFff;
+    font-size: larger;
+  }
+  .mascarillatext{
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: medium;
+  }
+  .asischeck-logo{
+    width: 65%;
+    display: block;
+    margin: auto;
+    margin-top: 12%;
+  }
+*{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
