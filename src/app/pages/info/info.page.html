@@ -1,6 +1,14 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>info</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="hamburguesa" slot="icon-only" name="menu-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Información</ion-title>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
