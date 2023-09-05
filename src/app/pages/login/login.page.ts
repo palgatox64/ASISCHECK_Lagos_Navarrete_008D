@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'; // Importa el componente AlertController
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,18 @@ export class LoginPage implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(public alertController: AlertController) { } // Inyecta el componente AlertController
+  constructor(public alertController: AlertController, private menuController: MenuController) { } // Inyecta el componente AlertController
 
   ngOnInit() {
   }
 
+  mostrarMenu() {
+    this.menuController.open('first');
+  }
+
   async autenticarLogin() {
     // Requiere agregar logica
+
 
     if (this.username === 'estudiante' && this.password === 'password') {
       const alert = await this.alertController.create({
@@ -43,6 +49,8 @@ export class LoginPage implements OnInit {
       await alert.present();
 
     }
+
+
 
   }
 

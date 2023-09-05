@@ -1,5 +1,14 @@
+* {
+  --ion-color-tertiary: #615ACDff;
+}
+
 ion-toolbar.ios {
   height: 76px; 
+}
+
+ion-title {
+  text-align: center;
+  color: white;
 }
 
 .logo {
