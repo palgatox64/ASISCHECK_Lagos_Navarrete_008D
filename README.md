@@ -32,6 +32,8 @@ En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual 
 - Matías Lagos
 - Sebastian Navarrete
 
+## Información Adicional
+
 > [!IMPORTANT]
 > Se necesita instalar las librerias de `node_modules` para que la app funcione.
 >
