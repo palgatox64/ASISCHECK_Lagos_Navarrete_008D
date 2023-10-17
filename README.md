@@ -35,6 +35,13 @@ En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual 
 ## Información Adicional
 
 > [!IMPORTANT]
-> Se necesita instalar las librerias de `node_modules` para que la app funcione.
+> 1. **Se necesita instalar las librerias de `node_modules` para que la app funcione.**
 >
-> Para realizar esto, ejecutar el comando ``npm i`` en la ruta del proyecto utilizando el ``Command Prompt``
+> * Para realizar esto, ejecutar el comando ``npm i`` en la ruta del proyecto utilizando el ``Command Prompt``
+> 2. **Se necesita instalar JSON Server.**
+>
+> * Para realizar esto, ejecutar el comando ``npm install -g json-server`` en la ruta del proyecto utilizando el ``Command Prompt``
+
+> [!NOTE]
+> Es necesario levantar el servidor de JSON previamente para que la aplicación funcione, esto se realiza con el comando <br>
+> ``json-server --watch archivo.json --host 0.0.0.0 --port 3300``
