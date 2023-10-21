@@ -35,6 +35,15 @@
       "email": "ji.neutron@nick.com",
       "password": "clorurodesodio",
       "isactive": false
+    },
+    {
+      "id": 5,
+      "name": "Chilly Willy",
+      "role": "Docente",
+      "username": "chilly.willy",
+      "email": "chilly.willy@gmail.com",
+      "password": "12345678",
+      "isactive": false
     }
   ]
 }
