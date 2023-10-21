@@ -43,4 +43,4 @@ En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual 
 > * Para realizar esto, ejecutar el comando ``npm install -g json-server`` en la ruta del proyecto utilizando el ``Command Prompt``
 
 > [!NOTE]
-> Es necesario levantar el servidor de JSON previamente para que la aplicación funcione, esto se realiza con el comando ``json-server --watch archivo.json --host 0.0.0.0 --port 3300``
+> Es necesario levantar el servidor de JSON previamente para que la aplicación funcione, esto se realiza con el comando ``json-server --watch users.json --host 0.0.0.0 --port 3300``
