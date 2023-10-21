@@ -1,7 +1,40 @@
 {
   "usuarios": [
     {
-      
+      "id": 1,
+      "name": "Uzziel Mislep",
+      "role": "Docente",
+      "username": "uz.mislep",
+      "email": "uz.mislep@gmail.com",
+      "password": "12345678",
+      "isactive": false
+    },
+    {
+      "id": 2,
+      "name": "Eustaquio Habichuelas",
+      "role": "Docente",
+      "username": "eu.habichuelas",
+      "email": "eu.habichuelas@gmail.com",
+      "password": "12345678",
+      "isactive": false
+    },
+    {
+      "id": 3,
+      "name": "Sebastian Navarrete",
+      "role": "Estudiante",
+      "username": "se.navarrete",
+      "email": "se.navarrete@duocuc.cl",
+      "password": "dragonforce",
+      "isactive": false
+    },
+    {
+      "id": 4,
+      "name": "Jimmy Neutron",
+      "role": "Estudiante",
+      "username": "ji.neutron",
+      "email": "ji.neutron@nick.com",
+      "password": "clorurodesodio",
+      "isactive": false
     }
   ]
 }

@@ -4,6 +4,9 @@ import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Users } from '../interfaces/interfaces';
+import { ApiCrudService } from 'src/app/services/api-crud.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -13,8 +16,18 @@ export class RegisterPage implements OnInit {
 
   registroForm: FormGroup;
 
+  newUsuario: Users = {
+    id: 0,
+    name: '',
+    role: '',
+    username: '',
+    email: '',
+    password: '',
+    isactive: false
+  }
+
   constructor(public alertController: AlertController, private menuController: MenuController, 
-              private formBuilder: FormBuilder, private router: Router) { 
+              private formBuilder: FormBuilder, private router: Router, private apiCrud: ApiCrudService) { 
 
     this.registroForm = this.formBuilder.group({
       nombre: ['', Validators.required],
@@ -55,6 +68,7 @@ export class RegisterPage implements OnInit {
         // Envía el formulario si todo está en orden
         console.log('Formulario válido. Enviar datos al servidor.');
         this.registroExitoso();
+        this.crearUsuario();
       }
     }
   }
@@ -83,6 +97,10 @@ export class RegisterPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  crearUsuario() {
+    this.apiCrud.CrearUsuario(this.newUsuario).subscribe();
   }
   
 
