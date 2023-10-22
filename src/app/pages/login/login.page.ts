@@ -88,6 +88,7 @@ export class LoginPage implements OnInit {
               sessionStorage.setItem('userrole', this.usuario.role);
               sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
+              this.authservice.setLoginStatus(true);
               this.router.navigate(['/home']);
             } else {
               this.noCoincidePassword();

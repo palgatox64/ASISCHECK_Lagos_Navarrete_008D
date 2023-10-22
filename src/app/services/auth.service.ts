@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Users } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
@@ -9,6 +10,14 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private isLoggedInSubject = new Subject<boolean>();
+
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  setLoginStatus(isLoggedIn: boolean) {
+    this.isLoggedInSubject.next(isLoggedIn);
+  }
 
   constructor(private httpclient: HttpClient, private router: Router) { }
 
