@@ -5,14 +5,15 @@
         <ion-title>PANEL</ion-title>
       </ion-toolbar>
     </ion-header>
+    
     <ion-content>
-      <ion-menu-toggle *ngFor="let c of componentes">
-        <ion-item [routerLink]="c.redirecTo" detail="true">
+      <ion-menu-toggle *ngFor="let c of componentes" (click)="verificarOpciones()">
+        <ion-item (click)="c.action ? c.action() : null" [routerLink]="c.redirecTo" detail="true">
           <ion-icon slot="start" [name]="c.icon"></ion-icon>
           {{ c.name }}
         </ion-item>
-
       </ion-menu-toggle>
+
     </ion-content>
   </ion-menu>
 

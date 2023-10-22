@@ -7,8 +7,9 @@ ion-toolbar.ios {
 }
 
 ion-title {
-  text-align: center;
+
   color: white;
+
 }
 
 .logo {
@@ -26,12 +27,7 @@ img {
   margin-top: 10%;
 }
 
-.titulo {
-  text-align: center;
-  font-family: sans-serif, Arial, Helvetica, ;
-  font-weight: bold;
-  font-size: 30px;
-}
+
 
 .parrafo {
   text-align: center;
@@ -51,5 +47,11 @@ img {
 .boton {
   --background: #615ACDff;
   width: 70%;
-  margin-bottom: 70px;
+  margin-bottom: 70px; 
 }
+
+a {
+  text-decoration: none;
+
+  color: white;
+  }

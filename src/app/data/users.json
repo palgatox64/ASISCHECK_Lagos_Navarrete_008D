@@ -53,6 +53,15 @@
       "email": "don.aroldo@gmail.com",
       "password": "donaroldo123",
       "isactive": false
+    },
+    {
+      "id": 7,
+      "name": "Gonzalo Salazar",
+      "role": "Estudiante",
+      "username": "jun.kok",
+      "email": "gona@gmail.cl",
+      "password": "elpapu123",
+      "isactive": false
     }
   ]
 }

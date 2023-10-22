@@ -52,7 +52,10 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('formulario limpiado');
+    this.loginForm.reset();
+  }
 
   mostrarMenu() {
     this.menuController.open('first');
@@ -81,7 +84,9 @@ export class LoginPage implements OnInit {
 
             if (this.usuario.password === this.loginForm.value.contrasena) {
               console.log('Usuario autenticado');
-
+              sessionStorage.setItem('username', this.usuario.username);
+              sessionStorage.setItem('userrole', this.usuario.role);
+              sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
               this.router.navigate(['/home']);
             } else {
@@ -93,6 +98,12 @@ export class LoginPage implements OnInit {
           }
         });
     }
+  }
+
+  ionViewWillEnter() {
+    // Lógica que deseas ejecutar cuando la página está a punto de mostrarse
+    // En este caso, puedes restablecer el formulario
+    this.loginForm.reset();
   }
 
   async showToast(msg: any) {
