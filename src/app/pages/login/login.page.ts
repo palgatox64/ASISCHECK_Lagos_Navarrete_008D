@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
   ) {
     this.loginForm = this.formBuilder.group({
       usuario: ['', [Validators.required]],
-      contrasena: ['', [Validators.required, Validators.minLength(8)]],
+      contrasena: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
@@ -89,6 +89,7 @@ export class LoginPage implements OnInit {
               sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
               this.authservice.setLoginStatus(true);
+              this.authservice.setLoggedUserName(this.usuario.username);
               this.router.navigate(['/home']);
             } else {
               this.noCoincidePassword();

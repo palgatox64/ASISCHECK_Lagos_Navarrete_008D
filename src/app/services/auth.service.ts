@@ -12,18 +12,28 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private isLoggedInSubject = new Subject<boolean>();
-
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  private usernameSubject = new Subject<string | null>();
+  username$ = this.usernameSubject.asObservable();
 
   setLoginStatus(isLoggedIn: boolean) {
     this.isLoggedInSubject.next(isLoggedIn);
   }
 
-  constructor(private httpclient: HttpClient, private router: Router) { }
+  constructor(private httpclient: HttpClient, private router: Router) { 
+  }
 
   GetUserById(codigo: any):Observable<Users>{
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?username=${codigo}`);
   }
+
+
+  // Método para establecer el nombre del usuario cuando inicia sesión
+setLoggedUserName(username: string | null) {
+  this.usernameSubject.next(username);
+  console.log(username); // Agrega esta línea para depurar
+}
 
   IsLogged(){
     return sessionStorage.getItem('username')!=null;
