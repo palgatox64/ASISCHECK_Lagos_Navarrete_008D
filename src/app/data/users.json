@@ -44,6 +44,15 @@
       "email": "chilly.willy@gmail.com",
       "password": "12345678",
       "isactive": false
+    },
+    {
+      "id": 6,
+      "name": "Don Aroldo",
+      "role": "Docente",
+      "username": "don.aroldo",
+      "email": "don.aroldo@gmail.com",
+      "password": "donaroldo123",
+      "isactive": false
     }
   ]
 }
