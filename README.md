@@ -1,10 +1,33 @@
 # ASISCHECK
 
-## Descripción
+### Descripción
 
-En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual se encarga de registrar la asistencia de los estudiantes mediante la generación de códigos QR.
+En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual se encarga de registrar la asistencia de los estudiantes mediante la generación de códigos QR. <br><br>
+En el actual contexto de la pandemia global, las instituciones de educación superior se han enfrentado a desafíos significativos en la gestión de la asistencia a las clases, ya que han tenido que alternar entre modalidades presenciales y remotas. Para abordar esta problemática, se ha desarrollado ASISCHECK, una innovadora Aplicación Móvil que revoluciona la forma en que se registra la asistencia de los alumnos en las aulas.
 
-![alt text](https://i.imgur.com/kbF3Uhv.png) ![alt text](https://i.imgur.com/VswfnVn.png) ![alt text](https://i.imgur.com/dHnnbmX.png) ![alt text](https://i.imgur.com/ZLHtD1E.png)
+### Características Clave:
+
+**Registro de Asistencia Eficiente:** ASISCHECK permite a los docentes generar códigos QR únicos con un simple clic en la plataforma web. Estos códigos se proyectan en el aula y son escaneados por los alumnos a través de la aplicación móvil.
+
+**Participación del Alumno:** Los alumnos utilizan la aplicación para escanear el código QR y registrar su asistencia de manera rápida y precisa. Este proceso fomenta la responsabilidad de los estudiantes en su asistencia a clases presenciales.
+
+**Minimización de Errores:** ASISCHECK reduce drásticamente los errores de registro que suelen ocurrir debido a la carga de trabajo de los docentes, la falta de tiempo, la confusión causada por el uso de mascarillas y el olvido ocasional.
+
+**Información en Tiempo Real:** La aplicación registra automáticamente la asistencia con la fecha y hora correspondientes, lo que facilita la generación de informes precisos y el seguimiento de la asistencia de los alumnos.
+
+**Fomento de la Asistencia:** ASISCHECK no solo resuelve los problemas de registro de asistencia, sino que también motiva a los alumnos a asistir a las clases presenciales, mejorando la participación en el entorno educativo.
+
+### Beneficios:
+
+- Reducción de los tiempos dedicados al registro de asistencia.
+- Minimización de errores en el proceso de registro.
+- Mejora en la eficiencia de los informes de asistencia.
+- Fomento de la asistencia de los alumnos a las clases presenciales.
+- Mayor colaboración entre docentes y estudiantes en la gestión de la asistencia.
+
+<h3>ASISCHECK es la solución definitiva para abordar los desafíos actuales de la asistencia en la educación superior. ¡Simplifica la gestión de la asistencia y mejora la experiencia educativa!</h3>
+
+![alt text](https://i.imgur.com/kbF3Uhv.png) ![alt text](https://i.imgur.com/VswfnVn.png) ![alt text](https://i.imgur.com/dHnnbmX.png) ![alt text](https://i.imgur.com/TFXaGih.png) <br>
 
 
 
