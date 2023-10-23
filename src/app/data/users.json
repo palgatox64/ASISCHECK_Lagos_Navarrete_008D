@@ -71,6 +71,15 @@
       "email": "become.pneuma@gmail.com",
       "password": "12345678",
       "isactive": false
+    },
+    {
+      "id": 9,
+      "name": "Enrique Pincheira",
+      "role": "Estudiante",
+      "username": "el.pincheira",
+      "email": "enrique.pincheira@gmail.com",
+      "password": "12345678",
+      "isactive": false
     }
   ]
 }

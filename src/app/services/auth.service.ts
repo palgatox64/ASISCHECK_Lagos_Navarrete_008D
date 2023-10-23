@@ -14,8 +14,7 @@ export class AuthService {
   private isLoggedInSubject = new Subject<boolean>();
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  private usernameSubject = new Subject<string | null>();
-  username$ = this.usernameSubject.asObservable();
+  private loggedUsername: string | null = null;
 
   setLoginStatus(isLoggedIn: boolean) {
     this.isLoggedInSubject.next(isLoggedIn);
@@ -30,10 +29,13 @@ export class AuthService {
 
 
   // Método para establecer el nombre del usuario cuando inicia sesión
-setLoggedUserName(username: string | null) {
-  this.usernameSubject.next(username);
-  console.log(username); // Agrega esta línea para depurar
-}
+  setLoggedUserName(username: string | null) {
+    this.loggedUsername = username;
+  }
+
+  getLoggedUserName(): string | null {
+    return this.loggedUsername;
+  }
 
   IsLogged(){
     return sessionStorage.getItem('username')!=null;
