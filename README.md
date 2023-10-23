@@ -27,7 +27,7 @@ En el actual contexto de la pandemia global, las instituciones de educación sup
 
 <h3>ASISCHECK es la solución definitiva para abordar los desafíos actuales de la asistencia en la educación superior. ¡Simplifica la gestión de la asistencia y mejora la experiencia educativa!</h3>
 
-![alt text](https://i.imgur.com/kbF3Uhv.png) ![alt text](https://i.imgur.com/VswfnVn.png) ![alt text](https://i.imgur.com/dHnnbmX.png) ![alt text](https://i.imgur.com/TFXaGih.png) <br>
+![alt text](https://i.imgur.com/kbF3Uhv.png) ![alt text](https://i.imgur.com/VswfnVn.png) ![alt text](https://i.imgur.com/V2tlKWI.png) ![alt text](https://i.imgur.com/SYIca5e.png) <br>
 
 
 
