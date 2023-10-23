@@ -62,6 +62,15 @@
       "email": "gona@gmail.cl",
       "password": "elpapu123",
       "isactive": false
+    },
+    {
+      "id": 8,
+      "name": "Patricio Pinto",
+      "role": "Estudiante",
+      "username": "become.pneuma",
+      "email": "become.pneuma@gmail.com",
+      "password": "12345678",
+      "isactive": false
     }
   ]
 }
