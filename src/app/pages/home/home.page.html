@@ -1,22 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
-    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="hamburguesa" slot="icon-only" name="menu-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Inicio</ion-title>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="login-logo">
-    <img src="assets/img/asischeck.png" alt="logo"> 
+    <img src="assets/img/asischecklogo.png" alt="logo"> 
   </div>
 
-  <p class="titulo">BIENVENIDO</p>
 
   <div class="parrafo">
-    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad repellat magni nostrum nesciunt ducimus quibusdam eligendi amet aut voluptatibus?</p>
+    <p>¡La mejor aplicación para registrar la asistencia de estudiantes universitarios!.</p>
+    <br>
+    <p class="animate-charcter">Bienvenido/a {{ loggedUserName }} </p>
   </div>
 
   <div class="boton-content">
-    <ion-button class="boton" (click)="mostrarMenu()">COMENZAR</ion-button>
+    <ion-button class="boton" ><a href="javascript:void(0)">comenzar</a></ion-button>
     
   </div>
 

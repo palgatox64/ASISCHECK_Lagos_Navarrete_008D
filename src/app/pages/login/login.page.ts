@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular'; // Importa el componente AlertController
 import { MenuController } from '@ionic/angular';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormControl,
+  Form,
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -8,50 +18,118 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  userdata: any;
 
-  username: string = ''; // Variable para el usuario
-  password: string = ''; // Variable para la contraseña
+  usuario = {
+    id: 0,
+    name: '',
+    role: '',
+    username: '',
+    email: '',
+    password: '',
+    isactive: true,
+  };
+
+  loginForm: FormGroup;
+
   showPassword: boolean = false;
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(public alertController: AlertController, private menuController: MenuController) { } // Inyecta el componente AlertController
+  constructor(
+    public alertController: AlertController,
+    private menuController: MenuController,
+    private router: Router,
+    private authservice: AuthService,
+    private toastController: ToastController,
+    private formBuilder: FormBuilder
+  ) {
+    this.loginForm = this.formBuilder.group({
+      usuario: ['', [Validators.required]],
+      contrasena: ['', [Validators.required, Validators.minLength(1)]],
+    });
+  }
 
   ngOnInit() {
+    console.log('formulario limpiado');
+    this.loginForm.reset();
   }
 
   mostrarMenu() {
     this.menuController.open('first');
   }
 
-  async autenticarLogin() {
-    // Requiere agregar logica
+  submitForm() {
+    if (this.loginForm.valid) {
+      this.authservice
+        .GetUserById(this.loginForm.value.usuario)
+        .subscribe((resp) => {
+          this.userdata = resp;
+          console.log(this.userdata);
 
+          if (this.userdata.length > 0) {
+            //si cumple la condición el objeto trae datos
+            this.usuario = {
+              //userdata llega en formato de arreglo
+              id: this.userdata[0].id,
+              name: this.userdata[0].name,
+              role: this.userdata[0].role,
+              username: this.userdata[0].username,
+              email: this.userdata[0].email,
+              password: this.userdata[0].password,
+              isactive: this.userdata[0].isactive,
+            };
 
-    if (this.username === 'estudiante' && this.password === 'password') {
-      const alert = await this.alertController.create({
-        header: 'Éxito',
-        message: 'Ingreso correcto.',
-        buttons: ['OK']
-      });
-
-      await alert.present();
-    } else {
-      // Si las credenciales son incorrectas, muestra un mensaje de error
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Credenciales incorrectas. Intente nuevamente.',
-        buttons: ['OK']
-      });
-
-      await alert.present();
-
+            if (this.usuario.password === this.loginForm.value.contrasena) {
+              console.log('Usuario autenticado');
+              sessionStorage.setItem('username', this.usuario.username);
+              sessionStorage.setItem('userrole', this.usuario.role);
+              sessionStorage.setItem('ingresado', 'true');
+              this.showToast('Sesión Iniciada');
+              this.authservice.setLoginStatus(true);
+              this.authservice.setLoggedUserName(this.usuario.username);
+              this.router.navigate(['/home']);
+            } else {
+              this.noCoincidePassword();
+            } 
+          } else {
+            this.noExisteUsuario();
+            this.loginForm.reset();
+          }
+        });
     }
-
-
-
   }
 
+  ionViewWillEnter() {
+    // Lógica que deseas ejecutar cuando la página está a punto de mostrarse
+    // En este caso, puedes restablecer el formulario
+    this.loginForm.reset();
+  }
+
+  async showToast(msg: any) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+    });
+    toast.present();
+  }
+
+  async noExisteUsuario() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'El usuario no existe',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+  async noCoincidePassword() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'Las contraseñas no coinciden',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 }

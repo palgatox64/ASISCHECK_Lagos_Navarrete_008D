@@ -22,52 +22,50 @@
 
   <div class="register-container">
 
-    <ion-item class="nombre">
-      <ion-icon class="login-icon" name="person-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="text" class="nombre" [autofocus]="false" placeholder="Ingrese su nombre completo" ></ion-input>
-    </ion-item>
+    <form [formGroup]="registroForm" (ngSubmit)="submitForm()">
 
-    <ion-item class="rut">
-      <ion-icon class="usuario-icon" name="card-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="number" class="nombre" [autofocus]="false" placeholder="Ingrese su rut" ></ion-input>
-    </ion-item>
+      <ion-item class="nombre">
+        <ion-icon class="login-icon" name="person-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="text" formControlName="nombre" [(ngModel)]="newUsuario.name" class="nombre" [autofocus]="false" placeholder="Ingrese su nombre completo" ></ion-input>
+      </ion-item>
 
-    <ion-item class="jornada">
-      <ion-icon class="login-icon" name="partly-sunny-outline" slot="start"></ion-icon>
-      <ion-select placeholder="Seleccione una jornada">
-        <ion-select-option value="diurno">Diurno</ion-select-option>
-        <ion-select-option value="vespertino">Vespertino</ion-select-option>
-       </ion-select>
-    </ion-item>
+      <ion-item class="rol">
+        <ion-icon class="login-icon" name="school-outline" slot="start"></ion-icon>
+        <ion-select style="padding-left: 7px" formControlName="rol" [(ngModel)]="newUsuario.role" placeholder="Escoja su rol">
+          <ion-select-option value="Estudiante">Estudiante</ion-select-option>
+          <ion-select-option value="Docente">Docente</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item class="usuario">
-      <ion-icon class="usuario-icon" name="person-add-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="text" class="nombre" [autofocus]="false" placeholder="Cree su usuario" ></ion-input>
-    </ion-item>
+      <ion-item class="usuario">
+        <ion-icon class="usuario-icon" name="sparkles-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="text" formControlName="usuario" [(ngModel)]="newUsuario.username" class="nombre" [autofocus]="false" placeholder="Ingrese su usuario" ></ion-input>
+      </ion-item>
 
-    <ion-item class="email">
-      <ion-icon class="email-icon" name="mail-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="email" class="email" [autofocus]="false" placeholder="Ingrese su correo" ></ion-input>
-    </ion-item>
-    
-    <ion-item class="password">
-      <ion-icon class="password-icon" name="lock-open-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="password" [autofocus]="false" placeholder="Ingrese su contraseña"></ion-input>
-    </ion-item>
+      <ion-item class="email">
+        <ion-icon class="email-icon" name="mail-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="email" formControlName="correo" [(ngModel)]="newUsuario.email" class="email" [autofocus]="false" placeholder="Ingrese su correo" ></ion-input>
+      </ion-item>
+      
+      <ion-item class="password">
+        <ion-icon class="password-icon" name="lock-open-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="password" formControlName="contrasena" [(ngModel)]="newUsuario.password" [autofocus]="false" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
 
-    <ion-item class="password">
-      <ion-icon class="password-icon" name="lock-closed-outline" slot="start"></ion-icon>
-      <ion-label></ion-label>
-      <ion-input type="password" [autofocus]="false" placeholder="Confirme su contraseña" ></ion-input>
-    </ion-item>
-    
-    <ion-button class="submit ion-text-uppercase"  expand="block" >Ingresar</ion-button>
-    
+      <ion-item class="password">
+        <ion-icon class="password-icon" name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="password" formControlName="confirmarContrasena" [autofocus]="false" placeholder="Confirme su contraseña" ></ion-input>
+      </ion-item>
+      
+      <ion-button class="submit ion-text-uppercase"  expand="block" type="submit" [disabled]="!registroForm.valid" >Ingresar</ion-button>
+
+    </form>
+
   </div>
 
 </ion-content>
