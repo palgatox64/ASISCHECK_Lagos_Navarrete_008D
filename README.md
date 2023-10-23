@@ -4,6 +4,10 @@
 
 En este repositorio se encuentra el código fuente de la app ASISCHECK, la cual se encarga de registrar la asistencia de los estudiantes mediante la generación de códigos QR.
 
+![alt text](https://i.imgur.com/kbF3Uhv.png) ![alt text](https://i.imgur.com/VswfnVn.png) ![alt text](https://i.imgur.com/dHnnbmX.png) ![alt text](https://i.imgur.com/ZLHtD1E.png)
+
+
+
 ## Secciones
 
 - Inicio
