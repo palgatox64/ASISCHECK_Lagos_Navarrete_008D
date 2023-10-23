@@ -33,11 +33,6 @@ export class AppComponent {
       name: 'Información',
       icon: 'information-circle-outline',
       redirecTo: '/info'
-    },
-    {
-      name: 'Asignaturas',
-      icon: 'book-outline',
-      redirecTo: '/asignaturas'
     }
   ];
 
@@ -65,6 +60,12 @@ export class AppComponent {
       );
 
       this.componentes.unshift({
+        name: 'Asignaturas',
+        icon: 'book-outline',
+        redirecTo: '/asignaturas'
+      });
+
+      this.componentes.unshift({
         name: 'Home',
         icon: 'home-outline',
         redirecTo: '/home'
@@ -79,7 +80,7 @@ export class AppComponent {
 
     } else if (!this.authService.IsLogged()) {
       // Si el usuario no está autenticado, elimina "Home" y "Cerrar sesión" del menú
-      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Cerrar sesión');
+      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Cerrar sesión');
       if (!this.componentes.some((item) => item.name === 'Iniciar sesión')) {
 
         this.componentes.unshift({
