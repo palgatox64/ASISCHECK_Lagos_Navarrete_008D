@@ -9,23 +9,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePage implements OnInit {
 
-  loggedUserName: string = '';
 
   constructor(private menuController: MenuController, private authservice: AuthService) { 
   }
 
   ngOnInit() {
 
-    this.authservice.username$.subscribe((username) => {
-      console.log('Username updated:', username); // Agrega esta línea para depurar
-      this.loggedUserName = username || ''; // Si es nulo, asigna una cadena vacía
-    });
+
 
   }
 
 
   mostrarMenu(){
     this.menuController.open('first');
+  }
+
+  get loggedUserName(): string | null {
+    return this.authservice.getLoggedUserName();
   }
 
 }
