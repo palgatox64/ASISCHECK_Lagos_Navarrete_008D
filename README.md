@@ -38,13 +38,6 @@ En el actual contexto de la pandemia global, las instituciones de educación sup
 - Registro
 - Información
 
-## Lenguajes utilizados
-
-- HTML
-- SCSS
-- JavaScript
-- TypeScript
-
 ## Herramientas utilizadas
 
 - Visual Studio Code
