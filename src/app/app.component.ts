@@ -34,6 +34,11 @@ export class AppComponent {
       icon: 'information-circle-outline',
       redirecTo: '/info'
     },
+    {
+      name: 'Asignaturas',
+      icon: 'book-outline',
+      redirecTo: '/asignaturas'
+    }
   ];
 
 
