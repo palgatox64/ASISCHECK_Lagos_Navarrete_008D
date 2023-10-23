@@ -1,13 +1,30 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>asignaturas</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="hamburguesa" slot="icon-only" name="menu-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Asignaturas</ion-title>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">asignaturas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card>
+      <img src="assets/img/visual.png" alt="visual">
+      <ion-card-header>
+        <ion-card-title>Programación de Aplicaciones Móviles</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Periodo: 2023<br>
+        Semestre: Segundo<br>
+        Horario semanal según sección: <br> 
+        008D (3hrs y 30min SEMANAL)<br><br>
+        Martes: 16:40 - 18:50 SALA 208.<br>
+        Jueves: 16:00 - 17:20 SALA 208.<br>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
