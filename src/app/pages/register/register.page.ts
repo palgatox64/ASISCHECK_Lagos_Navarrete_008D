@@ -14,7 +14,7 @@ import { ApiCrudService } from 'src/app/services/api-crud.service';
 })
 export class RegisterPage implements OnInit {
 
-  registroForm: FormGroup;
+  registroForm: FormGroup; // Define el formulario FormGroup
 
   newUsuario: Users = {
     id: 0,
@@ -29,7 +29,7 @@ export class RegisterPage implements OnInit {
   constructor(public alertController: AlertController, private menuController: MenuController, 
               private formBuilder: FormBuilder, private router: Router, private apiCrud: ApiCrudService) { 
 
-    this.registroForm = this.formBuilder.group({
+    this.registroForm = this.formBuilder.group({ // Define el formulario con campos y validadores
       nombre: ['', Validators.required],
       rol: ['', Validators.required],
       usuario: ['', [Validators.required, Validators.minLength(6)]],
@@ -74,6 +74,7 @@ export class RegisterPage implements OnInit {
   }
 
   async noCoincidePassword() {
+     // Muestra una alerta si las contraseñas no coinciden
       const alert = await this.alertController.create({
         header: 'Error',
         message: 'Las contraseñas no coinciden',
@@ -90,8 +91,8 @@ export class RegisterPage implements OnInit {
       buttons: [{
         text: 'OK',
         handler: () => {
-          // Redirige al usuario a la página de inicio de sesión (login)
-          this.router.navigate(['/login']); // Ajusta la ruta según tu configuración
+          // Redirige al usuario a la página de inicio de sesión (login) si el registro es exitoso
+          this.router.navigate(['/login']); 
         }
       }]
     });
@@ -100,6 +101,7 @@ export class RegisterPage implements OnInit {
   }
 
   crearUsuario() {
+    // Llama al servicio para crear un nuevo usuario
     this.apiCrud.CrearUsuario(this.newUsuario).subscribe();
   }
   

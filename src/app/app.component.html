@@ -7,12 +7,15 @@
     </ion-header>
     
     <ion-content>
+      <!-- Inicio de bucle *ngFor para iterar a través de los componentes -->
       <ion-menu-toggle *ngFor="let c of componentes" (click)="verificarOpciones()">
-        <ion-item (click)="c.action ? c.action() : null" [routerLink]="c.redirecTo" detail="true">
+        <!-- Cada elemento del menú -->
+        <ion-item (click)="c.action ? c.action() : null" [routerLink]="c.redirecTo" detail="true"> <!-- Invoca si está definida en el elemento del menú (c), de lo contrario, no hace nada (null). -->
           <ion-icon slot="start" [name]="c.icon"></ion-icon>
           {{ c.name }}
         </ion-item>
       </ion-menu-toggle>
+      <!-- Fin de bucle *ngFor -->
 
     </ion-content>
   </ion-menu>

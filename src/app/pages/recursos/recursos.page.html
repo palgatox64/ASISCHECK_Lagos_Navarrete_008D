@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="hamburguesa" slot="icon-only" name="menu-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Recursos</ion-title>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div class="recurso-container">
+    <div class="recurso" *ngFor="let recurso of recursos">
+      <div class="recurso-content">
+        <h2>{{ recurso.titulo }}</h2>
+        <p>Tipo: {{ recurso.tipo }}</p>
+        <img src="{{ recurso.imagen }}" alt="{{ recurso.titulo }} Portada">
+        <a href="{{ recurso.enlace }}" target="_blank">Ver recurso</a>
+      </div>
+    </div>
+  </div>
+  <div class="asischeck-logo">
+    <img src="assets/img/asischecklogo_text.png" alt="logo">
+  </div>
+  <br>
+</ion-content>
