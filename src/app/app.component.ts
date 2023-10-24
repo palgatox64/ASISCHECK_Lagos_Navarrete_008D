@@ -58,6 +58,12 @@ export class AppComponent {
       this.componentes = this.componentes.filter(
         (item) => item.name !== 'Iniciar sesión' && item.name !== 'Crear cuenta'
       );
+      
+      this.componentes.unshift({
+        name: 'Recursos',
+        icon: 'search-outline',
+        redirecTo: '/recursos'
+      });
 
       this.componentes.unshift({
         name: 'Asignaturas',
@@ -80,7 +86,7 @@ export class AppComponent {
 
     } else if (!this.authService.IsLogged()) {
       // Si el usuario no está autenticado, elimina "Home" y "Cerrar sesión" del menú
-      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Cerrar sesión');
+      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Recursos'  && item.name !== 'Cerrar sesión');
       if (!this.componentes.some((item) => item.name === 'Iniciar sesión')) {
 
         this.componentes.unshift({
