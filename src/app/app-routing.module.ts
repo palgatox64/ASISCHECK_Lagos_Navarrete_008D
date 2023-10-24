@@ -30,9 +30,11 @@ const routes: Routes = [
     path: 'asignaturas',
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule),
     canActivate: [AutorizadoGuard]
-  },  {
+  },
+  {
     path: 'recursos',
-    loadChildren: () => import('./pages/recursos/recursos.module').then( m => m.RecursosPageModule)
+    loadChildren: () => import('./pages/recursos/recursos.module').then( m => m.RecursosPageModule),
+    canActivate: [AutorizadoGuard]
   },
 
 
