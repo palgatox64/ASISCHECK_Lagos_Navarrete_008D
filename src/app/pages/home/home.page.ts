@@ -9,16 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePage implements OnInit {
 
-
   constructor(private menuController: MenuController, private authservice: AuthService) { 
   }
-
   ngOnInit() {
 
-
-
   }
-
 
   mostrarMenu(){
     this.menuController.open('first');

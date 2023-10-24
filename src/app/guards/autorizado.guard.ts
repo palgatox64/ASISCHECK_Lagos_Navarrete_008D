@@ -17,14 +17,16 @@ export class AutorizadoGuard {
     canActivate():
      
     | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.authservice.IsLogged()){
-        this.debeIniciar();
-        return false;
+      // Comprueba si el usuario está autenticado utilizando el servicio AuthService
+      if (!this.authservice.IsLogged()){ 
+        this.debeIniciar(); // Muestra una alerta si el usuario no está autenticado
+        return false; // No se permite el acceso a la ruta
       }
-    return true;
+    return true; // Permite el acceso a la ruta si el usuario está autenticado
   }
 
   async debeIniciar() {
+    // Muestra una alerta al usuario informando que debe iniciar sesión
     const alert = await this.alertController.create({
       header: 'Acceso denegado',
       message: 'Debe iniciar sesión',

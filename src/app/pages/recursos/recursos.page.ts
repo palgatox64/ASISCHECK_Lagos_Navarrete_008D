@@ -17,7 +17,8 @@ export class RecursosPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.http.get('http://localhost:3000/recursos').subscribe((data: any) => {
+    this.http.get('http://localhost:3000/recursos').subscribe((data: any) => { // Obtiene y almacena los recursos desde una API
+
       this.recursos = data;
     });
   }

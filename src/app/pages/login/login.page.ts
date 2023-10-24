@@ -46,6 +46,8 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private formBuilder: FormBuilder
   ) {
+
+    // Crea un formulario con validadores
     this.loginForm = this.formBuilder.group({
       usuario: ['', [Validators.required]],
       contrasena: ['', [Validators.required, Validators.minLength(1)]],
@@ -66,6 +68,7 @@ export class LoginPage implements OnInit {
       this.authservice
         .GetUserById(this.loginForm.value.usuario)
         .subscribe((resp) => {
+          // Realiza una solicitud para obtener datos de usuario
           this.userdata = resp;
           console.log(this.userdata);
 
@@ -83,6 +86,7 @@ export class LoginPage implements OnInit {
             };
 
             if (this.usuario.password === this.loginForm.value.contrasena) {
+              // Si la contraseña coincide, autentica al usuario
               console.log('Usuario autenticado');
               sessionStorage.setItem('username', this.usuario.username);
               sessionStorage.setItem('userrole', this.usuario.role);
@@ -92,10 +96,10 @@ export class LoginPage implements OnInit {
               this.authservice.setLoggedUserName(this.usuario.username);
               this.router.navigate(['/home']);
             } else {
-              this.noCoincidePassword();
+              this.noCoincidePassword(); // Muestra un error si la contraseña no coincide
             } 
           } else {
-            this.noExisteUsuario();
+            this.noExisteUsuario(); // Muestra un error si el usuario no existe
             this.loginForm.reset();
           }
         });
@@ -103,11 +107,11 @@ export class LoginPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    // Lógica que deseas ejecutar cuando la página está a punto de mostrarse
-    // En este caso, puedes restablecer el formulario
+    //restablece el formulario cuando se carga la página
     this.loginForm.reset();
   }
 
+  //Muestra un mensaje emergente en la parte inferior de la pantalla con parámetro msg
   async showToast(msg: any) {
     const toast = await this.toastController.create({
       message: msg,
@@ -116,6 +120,7 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  //Muestra una alerta que indica que el usuario no existe
   async noExisteUsuario() {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -124,6 +129,8 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+
+  //Muestra una alerta que indica que la contraseña no coincide
   async noCoincidePassword() {
     const alert = await this.alertController.create({
       header: 'Error',

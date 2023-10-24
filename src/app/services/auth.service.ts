@@ -14,15 +14,21 @@ export class AuthService {
   private isLoggedInSubject = new Subject<boolean>();
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
+  // Almacena el nombre de usuario autenticado
   private loggedUsername: string | null = null;
 
+  
+  // Método para actualizar el estado de autenticación
   setLoginStatus(isLoggedIn: boolean) {
     this.isLoggedInSubject.next(isLoggedIn);
   }
 
+  // Método para actualizar el estado de autenticación
+
   constructor(private httpclient: HttpClient, private router: Router) { 
   }
 
+  // Obtener información de usuario por ID
   GetUserById(codigo: any):Observable<Users>{
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?username=${codigo}`);
   }
@@ -33,14 +39,17 @@ export class AuthService {
     this.loggedUsername = username;
   }
 
+  // Obtener el nombre de usuario autenticado
   getLoggedUserName(): string | null {
     return this.loggedUsername;
   }
 
+// Verificar si el usuario está autenticado
   IsLogged(){
     return sessionStorage.getItem('username')!=null;
   }
 
+ // Verificar si el usuario no está autenticado
   IsNotLogged() {
     return !this.IsLogged(); // Devuelve true si el usuario no está autenticado, de lo contrario, devuelve false.
   }
