@@ -61,6 +61,12 @@ En el actual contexto de la pandemia global, las instituciones de educación sup
 > 2. **Se necesita instalar JSON Server.**
 >
 > * Para realizar esto, ejecutar el comando ``npm install -g json-server`` en la ruta del proyecto utilizando el ``Command Prompt``
+>
+> 3. **Se necesita instalar las librerias ``cors`` y ``express``**
+> * Para realizar esto, ejecutar el comando ``npm install express`` y ``npm install cors`` utilizando el ``Command Prompt``
 
 > [!NOTE]
-> Es necesario levantar el servidor de JSON previamente para que la aplicación funcione, esto se realiza con el comando ``json-server --watch users.json --host 0.0.0.0 --port 3300``
+> 1. **Es necesario levantar el servidor de JSON previamente para que la aplicación funcione.**
+> * Esto se realiza con el comando ``json-server --watch users.json --host 0.0.0.0 --port 3300`` en la ruta ``src/app/data/`` utilizando el ``Command Prompt``
+> 2. **Es necesario levantar el servidor Express previamente para que la aplicación funcione.** 
+> * Esto se realiza con el comando ``node recursos.js`` en la ruta ``src/app/data/`` utilizando el ``Command Prompt``
