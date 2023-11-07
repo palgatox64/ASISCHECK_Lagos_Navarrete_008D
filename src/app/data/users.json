@@ -7,15 +7,21 @@
       "subject": [
         {
           "id": 1,
-          "name": "PROGRAMACION DE APLICACIONES MOVILES"
+          "name": "PROGRAMACION DE APLICACIONES MOVILES",
+          "periodo": "2023-2",
+          "horario": "Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00"
         },
         {
           "id": 2,
-          "name": "DESARROLLO FULL STACK"
+          "name": "DESARROLLO FULL STACK",
+          "periodo": "2023-2",
+          "horario": "Martes 8:00 - 10:00 | Viernes 8:00 - 10:00"
         },
         {
           "id": 3,
-          "name": "PROGRAMACION DE BASE DE DATOS"
+          "name": "PROGRAMACION DE BASE DE DATOS",
+          "periodo": "2023-2",
+          "horario": "Miercoles 8:00 - 10:00"
         }
       ],
       "username": "se.navarrete",
