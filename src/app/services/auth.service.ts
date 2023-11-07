@@ -33,6 +33,11 @@ export class AuthService {
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?username=${codigo}`);
   }
 
+  // Método para obtener las asignaturas de un usuario por su ID
+  GetAsignaturasByUserId(codigo: any): Observable<string[]> {
+    return this.httpclient.get<string[]>(`${environment.apiUrl}/usuarios/${codigo}/asignaturas`);
+  }
+
 
   // Método para establecer el nombre del usuario cuando inicia sesión
   setLoggedUserName(username: string | null) {

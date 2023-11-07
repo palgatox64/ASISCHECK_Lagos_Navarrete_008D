@@ -38,6 +38,13 @@
         </ion-select>
       </ion-item>
 
+      <ion-item class="asignatura">
+        <ion-icon class="login-icon" name="book-outline" slot="start"></ion-icon>
+        <ion-select multiple formControlName="subject" style="padding-left: 7px" placeholder="Escoja asignaturas">
+          <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura">{{ asignatura.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
       <ion-item class="usuario">
         <ion-icon class="usuario-icon" name="sparkles-outline" slot="start"></ion-icon>
         <ion-label></ion-label>
@@ -63,6 +70,8 @@
       </ion-item>
       
       <ion-button class="submit ion-text-uppercase"  expand="block" type="submit" [disabled]="!registroForm.valid" >Ingresar</ion-button>
+
+      <br>
 
     </form>
 

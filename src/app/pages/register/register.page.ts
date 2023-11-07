@@ -20,11 +20,20 @@ export class RegisterPage implements OnInit {
     id: 0,
     name: '',
     role: '',
+    subject: [],
     username: '',
     email: '',
     password: '',
-    isactive: false
   }
+
+  asignaturas = [
+    { id: 1, name: 'PROGRAMACION DE APLICACIONES MOVILES'},
+    { id: 2, name: 'DESARROLLO FULL STACK'},
+    { id: 3, name: 'PROGRAMACION DE BASE DE DATOS'},
+
+  ];
+
+
 
   constructor(public alertController: AlertController, private menuController: MenuController, 
               private formBuilder: FormBuilder, private router: Router, private apiCrud: ApiCrudService) { 
@@ -32,6 +41,7 @@ export class RegisterPage implements OnInit {
     this.registroForm = this.formBuilder.group({ // Define el formulario con campos y validadores
       nombre: ['', Validators.required],
       rol: ['', Validators.required],
+      subject: ['', Validators.required],
       usuario: ['', [Validators.required, Validators.minLength(6)]],
       correo: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
@@ -50,12 +60,9 @@ export class RegisterPage implements OnInit {
   submitForm() {
     if (this.registroForm.valid) {
       // Accede a los valores del formulario
-      const nombre = this.registroForm.get('nombre')?.value;
-      const rol = this.registroForm.get('rol')?.value;
-      const usuario = this.registroForm.get('usuario')?.value;
-      const correo = this.registroForm.get('correo')?.value;
       const contrasena = this.registroForm.get('contrasena')?.value;
       const confirmarContrasena = this.registroForm.get('confirmarContrasena')?.value;
+      
   
       // Realiza las validaciones adicionales, como comparar contraseñas
       if (contrasena !== confirmarContrasena) {
@@ -67,6 +74,10 @@ export class RegisterPage implements OnInit {
       } else {
         // Envía el formulario si todo está en orden
         console.log('Formulario válido. Enviar datos al servidor.');
+
+        this.newUsuario.subject = this.registroForm.get('subject')?.value;
+
+
         this.registroExitoso();
         this.crearUsuario();
       }
@@ -83,6 +94,7 @@ export class RegisterPage implements OnInit {
 
       await alert.present();
   }
+
 
   async registroExitoso() {
     const alert = await this.alertController.create({
