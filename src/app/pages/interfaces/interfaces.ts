@@ -7,8 +7,9 @@ export interface Users {
   id: number;
   name: string;
   role: string;
-  subject: string[];
+  subject?: string[];
   username: string;
   email: string;
   password: string;
 }
+

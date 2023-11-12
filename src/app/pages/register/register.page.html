@@ -38,7 +38,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item class="asignatura">
+      <ion-item class="asignatura" *ngIf="newUsuario.role === 'Docente'">
         <ion-icon class="login-icon" name="book-outline" slot="start"></ion-icon>
         <ion-select multiple formControlName="subject" style="padding-left: 7px" placeholder="Escoja asignaturas">
           <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura">{{ asignatura.name }}</ion-select-option>

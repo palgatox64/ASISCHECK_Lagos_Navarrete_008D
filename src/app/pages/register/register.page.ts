@@ -3,7 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Users } from '../interfaces/interfaces';
 import { ApiCrudService } from 'src/app/services/api-crud.service';
 
@@ -11,7 +11,9 @@ import { ApiCrudService } from 'src/app/services/api-crud.service';
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
+  
 })
+
 export class RegisterPage implements OnInit {
 
   registroForm: FormGroup; // Define el formulario FormGroup
@@ -20,7 +22,6 @@ export class RegisterPage implements OnInit {
     id: 0,
     name: '',
     role: '',
-    subject: [],
     username: '',
     email: '',
     password: '',
@@ -40,11 +41,22 @@ export class RegisterPage implements OnInit {
     this.registroForm = this.formBuilder.group({ // Define el formulario con campos y validadores
       nombre: ['', Validators.required],
       rol: ['', Validators.required],
-      subject: ['', Validators.required],
+      subject: [''],
       usuario: ['', [Validators.required, Validators.minLength(6)]],
       correo: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       confirmarContrasena: ['', [Validators.required]],
+    });
+
+    // Escucha los cambios en el campo "rol" y ajusta dinámicamente el campo "subject"
+    this.registroForm.get('rol')?.valueChanges.subscribe((rol) => {
+      if (rol === 'Docente') {
+        this.registroForm.get('subject')?.setValidators([Validators.required]);
+      } else {
+        this.registroForm.get('subject')?.clearValidators();
+      }
+
+      this.registroForm.get('subject')?.updateValueAndValidity();
     });
 
   }
@@ -115,6 +127,8 @@ export class RegisterPage implements OnInit {
     // Llama al servicio para crear un nuevo usuario
     this.apiCrud.CrearUsuario(this.newUsuario).subscribe();
   }
+
+  
   
 
 }
