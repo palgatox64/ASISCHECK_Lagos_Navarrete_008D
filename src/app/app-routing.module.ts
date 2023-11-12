@@ -31,7 +31,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule),
     canActivate: [AutorizadoGuard],
     data: { validarRol: 'Docente' }
-
   },
   {
     path: 'recursos',

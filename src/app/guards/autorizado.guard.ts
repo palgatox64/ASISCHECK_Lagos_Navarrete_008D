@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable, of, from } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { switchMap, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
@@ -25,11 +25,11 @@ export class AutorizadoGuard {
       }
       
       if (route.data && route.data['validarRol']) {
-        return this.validarRol(route.data['validarRol']); // Comprueba si el usuario tiene el rol requerido
+        return this.validarRol(route.data['validarRol']);
       }
-     
-    return true; // Permite el acceso a la ruta si el usuario está autenticado
-  }
+  
+      return true;
+    }
 
   validarRol(rolRequerido: string): Observable<boolean | UrlTree> {
     return from(this.authservice.getUserRole()).pipe(
@@ -43,8 +43,6 @@ export class AutorizadoGuard {
       })
     );
   }
-
-
 
   async debeIniciar() {
     // Muestra una alerta al usuario informando que debe iniciar sesión
@@ -68,12 +66,11 @@ export class AutorizadoGuard {
       header: 'Acceso denegado',
       message: 'No tiene permiso para acceder a esta página',
       buttons: [{
-        text: 'OK'     
+        text: 'OK'
       }]
     });
 
     await alert.present();
   }
-    
   
 }
