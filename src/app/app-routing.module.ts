@@ -29,7 +29,9 @@ const routes: Routes = [
   {
     path: 'asignaturas',
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule),
-    canActivate: [AutorizadoGuard]
+    canActivate: [AutorizadoGuard],
+    data: { validarRol: 'Docente' }
+
   },
   {
     path: 'recursos',

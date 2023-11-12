@@ -52,10 +52,6 @@ export class AuthService {
   }
 
 
-
-
-
-
   // Método para establecer el nombre del usuario cuando inicia sesión
   setLoggedUserName(username: string | null) {
     this.loggedUsername = username;
@@ -82,6 +78,22 @@ export class AuthService {
     sessionStorage.removeItem('userrole');
     sessionStorage.removeItem('ingresado');
 
+  }
+
+  getUserRole(): Observable<string | null> {
+    const username = this.getLoggedUserName();
+
+    if (username) {
+      return this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios/?username=${username}`).pipe(
+        map(users => {
+          const user = users[0];
+          console.log('Rol del usuario:', user?.role);
+          return user?.role || null;
+        })
+      );
+    } else {
+      return of(null); // Retorna un observable nulo si no hay un nombre de usuario autenticado
+    }
   }
 
 }

@@ -40,6 +40,19 @@ export class AsignaturasPage implements OnInit {
     );
   }
 
+  mostrarRole() {
+    this.authService.getUserRole().subscribe(
+      {
+        next: role => {
+          console.log('Rol del usuario:', role);
+        },
+        error: err => {
+          console.error('Error al obtener el rol:', err);
+        }
+      }
+    );
+  }
+
 
 
   mostrarMenu(){
