@@ -66,7 +66,11 @@ export class AutorizadoGuard {
       header: 'Acceso denegado',
       message: 'No tiene permiso para acceder a esta página',
       buttons: [{
-        text: 'OK'
+        text: 'OK',
+        handler: () => {
+          // Redirige al usuario a la página de inicio de sesión (login)
+          this.router.navigate(['/info']); // Ajusta la ruta según tu configuración
+        }
       }]
     });
 

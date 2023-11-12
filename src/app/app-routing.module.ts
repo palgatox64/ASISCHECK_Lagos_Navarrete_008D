@@ -36,7 +36,11 @@ const routes: Routes = [
     path: 'recursos',
     loadChildren: () => import('./pages/recursos/recursos.module').then( m => m.RecursosPageModule),
     canActivate: [AutorizadoGuard]
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+
 
 
 

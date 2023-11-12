@@ -1,0 +1,42 @@
+* {
+  --ion-color-tertiary: #615ACDff;
+}
+
+ion-toolbar.ios {
+  height: 76px; 
+}
+
+ion-title {
+
+  color: white;
+
+}
+
+
+.boton-content {
+  justify-content: center;
+  text-align: center;
+}
+
+.boton {
+  --background: #615ACDff;
+  width: 70%;
+  margin-bottom: 70px; 
+}
+
+
+  .asischeck-logo{
+      width: 65%;
+      display: block;
+      margin: auto;
+      margin-top: 1%;
+    }
+
+.profile-avatar {
+  justify-content: center;
+  text-align: center;
+
+}
+    
+
+
