@@ -64,6 +64,12 @@ export class AppComponent {
       this.componentes = this.componentes.filter(
         (item) => item.name !== 'Iniciar sesión' && item.name !== 'Crear cuenta'
       );
+
+      this.componentes.unshift({
+        name: 'Perfil',
+        icon: 'person-outline',
+        redirecTo: '/perfil'
+      });
       
       this.componentes.unshift({
         name: 'Recursos',
@@ -102,7 +108,7 @@ export class AppComponent {
 
     } else if (!this.authService.IsLogged()) {
       // Si el usuario no está autenticado, esconde asignaturas, recursos, home y cerrar sesión
-      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Recursos'  && item.name !== 'Cerrar sesión');
+      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Recursos' && item.name !== 'Perfil'  && item.name !== 'Cerrar sesión');
       if (!this.componentes.some((item) => item.name === 'Iniciar sesión')) {
 
         // Si el usuario no está autenticado, muestra "Iniciar sesión" y "Crear cuenta" al menú

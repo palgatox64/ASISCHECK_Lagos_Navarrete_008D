@@ -48,6 +48,16 @@
       "email": "ilmatias@gmail.com",
       "password": "comparini123",
       "subject": []
+    },
+    {
+      "id": 4,
+      "name": "Eustaquio Habichuelas",
+      "role": "Estudiante",
+      "username": "eu.staquio",
+      "email": "eu.staquio@gmail.com",
+      "password": "dragonforce",
+      "profilePicture": "assets/img/unknown.jpg",
+      "subject": ""
     }
   ]
 }

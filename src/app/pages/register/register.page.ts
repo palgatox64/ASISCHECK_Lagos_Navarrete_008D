@@ -26,6 +26,7 @@ export class RegisterPage implements OnInit {
     username: '',
     email: '',
     password: '',
+    profilePicture: 'assets/img/unknown.jpg',
   }
 
   asignaturas = [

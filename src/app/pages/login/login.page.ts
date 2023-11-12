@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
     username: '',
     email: '',
     password: '',
+    profilePicture: '',
     isactive: true,
   };
 
@@ -82,14 +83,18 @@ export class LoginPage implements OnInit {
               username: this.userdata[0].username,
               email: this.userdata[0].email,
               password: this.userdata[0].password,
+              profilePicture: this.userdata[0].profilePicture,
               isactive: this.userdata[0].isactive,
             };
 
             if (this.usuario.password === this.loginForm.value.contrasena) {
               // Si la contraseña coincide, autentica al usuario
               console.log('Usuario autenticado');
+              sessionStorage.setItem('name', this.usuario.name);
+              sessionStorage.setItem('email', this.usuario.email);
               sessionStorage.setItem('username', this.usuario.username);
               sessionStorage.setItem('userrole', this.usuario.role);
+              sessionStorage.setItem('profilePicture', this.usuario.profilePicture);
               sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
               this.authservice.setLoginStatus(true);

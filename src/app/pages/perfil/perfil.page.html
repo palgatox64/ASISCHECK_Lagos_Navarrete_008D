@@ -13,41 +13,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <br><br>
   <div class="profile-container">
     <ion-avatar class="profile-avatar">
-      
+      <img [src]="foto" alt="Avatar">
     </ion-avatar>
-    <ion-button expand="full" color="ion-color-iris">
-      Subir Avatar
+    <ion-button class="upload-button boton" shape="circle">
+      <ion-icon slot="icon-only" name="pencil" style="width: 100%"></ion-icon>
     </ion-button>
 
     <ion-list lines="full" class="ion-no-margin">
       <ion-item>
-        <ion-label position="stacked" color="ion-color-iris">Nombre y Apellido</ion-label>
-        <ion-input value="Nombre Apellido" disabled></ion-input>
+        <ion-label position="stacked" color="ion-color-iris">Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre" disabled></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Usuario</ion-label>
-        <ion-input value="nombredeusuario" disabled></ion-input>
+        <ion-input [(ngModel)]="usuario" disabled></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Correo</ion-label>
-        <ion-input type="email" value="correo@ejemplo.com" disabled></ion-input>
+        <ion-input [(ngModel)]="correo" disabled></ion-input>
       </ion-item>
     </ion-list>
-
-    <ion-button expand="full" color="ion-color-ultra-violet">
-      Editar Perfil
-    </ion-button>
+    <br>
+    <ion-button class="boton">EDITAR PERFIL</ion-button>
   </div>
 
   <br>
- 
-  
-  <div class="asischeck-logo">
-    <img src="assets/img/asischecklogo_text.png" alt="logo">
-  </div>
-  <br>
+
+
 </ion-content>
+
