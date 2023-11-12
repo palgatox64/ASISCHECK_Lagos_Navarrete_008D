@@ -7,6 +7,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Users } from '../interfaces/interfaces';
 import { ApiCrudService } from 'src/app/services/api-crud.service';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -68,11 +69,13 @@ export class RegisterPage implements OnInit {
     this.menuController.open('first');
   }
 
-  submitForm() {
+  async submitForm() {
     if (this.registroForm.valid) {
       // Accede a los valores del formulario
       const contrasena = this.registroForm.get('contrasena')?.value;
       const confirmarContrasena = this.registroForm.get('confirmarContrasena')?.value;
+      const username = this.registroForm.get('usuario')?.value; // Agrega esta línea
+      const email = this.registroForm.get('correo')?.value; // Agrega esta línea
       
   
       // Realiza las validaciones adicionales, como comparar contraseñas
@@ -83,14 +86,23 @@ export class RegisterPage implements OnInit {
         this.noCoincidePassword();
         
       } else {
-        // Envía el formulario si todo está en orden
-        console.log('Formulario válido. Enviar datos al servidor.');
+        // Verifica si el usuario ya existe
+        const usuarioExistente = await this.verificarUsuarioExistente(username, email);
 
-        this.newUsuario.subject = this.registroForm.get('subject')?.value;
-
-
-        this.registroExitoso();
-        this.crearUsuario();
+        if (usuarioExistente.existe) {
+          // El usuario ya existe, muestra un mensaje de error específico
+          if (usuarioExistente.tipo === 'usuario') {
+            this.usuarioExistenteAlert();
+          } else if (usuarioExistente.tipo === 'correo') {
+            this.correoExistenteAlert();
+          }
+        } else {
+          // Envía el formulario si todo está en orden
+          console.log('Formulario válido. Enviar datos al servidor.');
+          this.newUsuario.subject = this.registroForm.get('subject')?.value;
+          this.registroExitoso();
+          this.crearUsuario();
+        }
       }
     }
   }
@@ -123,12 +135,52 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
+  async verificarUsuarioExistente(username: string, email: string): Promise<{ existe: boolean; tipo?: 'usuario' | 'correo' }> {
+    try {
+      const usuarios = await this.apiCrud.ObtenerUsuarios().toPromise();
+  
+      if (usuarios) {
+        const usuarioExistente = usuarios.some((usuario) => usuario.username === username);
+        const correoExistente = usuarios.some((usuario) => usuario.email === email);
+  
+        if (usuarioExistente || correoExistente) {
+          return { existe: true, tipo: usuarioExistente ? 'usuario' : 'correo' };
+        } else {
+          return { existe: false };
+        }
+      } else {
+        console.error('La lista de usuarios es undefined');
+        return { existe: false };
+      }
+    } catch (error) {
+      console.error('Error al obtener la lista de usuarios', error);
+      return { existe: false };
+    }
+  }
   crearUsuario() {
     // Llama al servicio para crear un nuevo usuario
     this.apiCrud.CrearUsuario(this.newUsuario).subscribe();
   }
 
+  async usuarioExistenteAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'El usuario ya está registrado. Por favor, elija otro.',
+      buttons: ['OK']
+    });
   
+    await alert.present();
+  }
+
+  async correoExistenteAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'El correo electrónico ya está registrado. Por favor, elija otro.',
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
   
 
 }

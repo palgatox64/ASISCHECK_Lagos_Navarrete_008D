@@ -39,6 +39,15 @@
       "email": "wanolo@gmail.com",
       "password": "dragonforce",
       "subject": ""
+    },
+    {
+      "id": 3,
+      "name": "Matias Lagos",
+      "role": "Estudiante",
+      "username": "ilmatias",
+      "email": "ilmatias@gmail.com",
+      "password": "comparini123",
+      "subject": []
     }
   ]
 }
