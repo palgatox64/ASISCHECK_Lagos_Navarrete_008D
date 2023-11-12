@@ -1,23 +1,12 @@
 <ion-app>
-  <ion-menu contentId="main" menuId="first" side="start" swipeGesture="false">
-    <ion-header>
-      <ion-toolbar color="tertiary">
-        <ion-title>PANEL</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    
-    <ion-content>
-      <!-- Inicio de bucle *ngFor para iterar a través de los componentes -->
-      <ion-menu-toggle *ngFor="let c of componentes" (click)="verificarOpciones()">
-        <!-- Cada elemento del menú -->
-        <ion-item (click)="c.action ? c.action() : null" [routerLink]="c.redirecTo" detail="true"> <!-- Invoca si está definida en el elemento del menú (c), de lo contrario, no hace nada (null). -->
-          <ion-icon slot="start" [name]="c.icon"></ion-icon>
-          {{ c.name }}
-        </ion-item>
-      </ion-menu-toggle>
-      <!-- Fin de bucle *ngFor -->
+  <!-- Menú para Docentes -->
+  <ion-menu *ngIf="isAuthenticated && (isDocente() | async)" contentId="main" menuId="docente" side="start" swipeGesture="false">
+    <!-- ... (contenido del menú para docentes) -->
+  </ion-menu>
 
-    </ion-content>
+  <!-- Menú para Estudiantes -->
+  <ion-menu *ngIf="!isAuthenticated || !(isDocente() | async)" contentId="main" menuId="estudiante" side="start" swipeGesture="false">
+    <!-- ... (contenido del menú para estudiantes) -->
   </ion-menu>
 
   <ion-router-outlet id="main"></ion-router-outlet>

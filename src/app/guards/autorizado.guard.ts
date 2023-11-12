@@ -25,7 +25,7 @@ export class AutorizadoGuard {
       }
       
       if (route.data && route.data['validarRol']) {
-        return this.validarRol(route.data['validarRol']);
+        return this.validarRol(route.data['validarRol']); // Comprueba si el usuario tiene el rol requerido
       }
      
     return true; // Permite el acceso a la ruta si el usuario está autenticado

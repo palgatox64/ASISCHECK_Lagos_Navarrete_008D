@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-
-// Define una interfaz llamada "Componente" para representar los elementos del menú
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 interface Componente {
-  name: string; // Nombre del componente
-  icon: string; // Icono asociado
-  redirecTo: string; // Ruta de redirección al hacer clic en el componente
-  action?: () => void; // Opcionalmente, una función a ejecutar al hacer clic
+  name: string;
+  icon: string;
+  redirecTo: string;
+  action?: () => void;
 }
 
 @Component({
@@ -15,107 +15,69 @@ interface Componente {
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  isAuthenticated: boolean; // Variable para verificar si el usuario está autenticado
-
-
-  // Arreglo de objetos que representan los elementos del menú
-  componentes: Componente[] = [
-
-    {
-      name: 'Iniciar sesión',
-      icon: 'log-in-outline',
-      redirecTo: '/login'
-    },
-    {
-      name: 'Crear cuenta',
-      icon: 'person-add-outline',
-      redirecTo: '/register'
-    },
-    {
-      name: 'Información',
-      icon: 'information-circle-outline',
-      redirecTo: '/info'
-    }
-  ];
-
-
+  isAuthenticated: boolean;
+  docenteComponentes: Componente[] = [];
+  estudianteComponentes: Componente[] = [];
 
   constructor(private authService: AuthService) {
-    // Verifica si el usuario está autenticado cuando se carga la aplicación
     this.isAuthenticated = this.authService.IsLogged();
     this.verificarOpciones();
   }
 
   ngOnInit() {
-    // Suscribe y escucha cambios en el estado de autenticación del usuario
     this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isAuthenticated = isLoggedIn;
       this.verificarOpciones();
     });
   }
 
-  verificarOpciones(){
-    // Verifica si el usuario está autenticado y agrega el ítem "Home" no está presente
-    if (this.authService.IsLogged() && !this.componentes.some(item => item.name === 'Home') ) {
+  ionViewWillEnter() {
+    this.actualizarComponentes();
+  }
 
-      // Si el usuario está autenticado, muestra "Home" , "Cerrar sesión , asignaturas y recursos" al menú
-      this.componentes = this.componentes.filter(
-        (item) => item.name !== 'Iniciar sesión' && item.name !== 'Crear cuenta'
+  public verificarOpciones() {
+    this.docenteComponentes = [];
+    this.estudianteComponentes = [];
+
+    if (this.isAuthenticated) {
+      // Si el usuario está autenticado, muestra "Home", "Recursos" y "Cerrar sesión" al menú
+      this.estudianteComponentes.push(
+        { name: 'Home', icon: 'home-outline', redirecTo: '/home' },
+        { name: 'Recursos', icon: 'search-outline', redirecTo: '/recursos' },
+        { name: 'Información', icon: 'information-circle-outline', redirecTo: '/info'},
+        { name: 'Cerrar sesión', icon: 'log-out-outline', redirecTo: '/login', action: () => this.cerrarSesion() }
       );
-      
-      this.componentes.unshift({
-        name: 'Recursos',
-        icon: 'search-outline',
-        redirecTo: '/recursos'
+
+      this.isDocente().subscribe((esDocente) => {
+        if (esDocente) {
+          this.docenteComponentes.push({ name: 'Asignaturas', icon: 'book-outline', redirecTo: '/asignaturas' });
+        } 
       });
-
-      this.componentes.unshift({
-        name: 'Asignaturas',
-        icon: 'book-outline',
-        redirecTo: '/asignaturas'
-      });
-
-      this.componentes.unshift({
-        name: 'Home',
-        icon: 'home-outline',
-        redirecTo: '/home'
-      });
-
-      this.componentes.push({
-        name: 'Cerrar sesión',
-        icon: 'log-out-outline',
-        redirecTo: '/login',
-        action: () => this.cerrarSesion()
-      });
-
-    } else if (!this.authService.IsLogged()) {
-      // Si el usuario no está autenticado, esconde asignaturas, recursos, home y cerrar sesión
-      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Recursos'  && item.name !== 'Cerrar sesión');
-      if (!this.componentes.some((item) => item.name === 'Iniciar sesión')) {
-
-        // Si el usuario no está autenticado, muestra "Iniciar sesión" y "Crear cuenta" al menú
-        this.componentes.unshift({
-          name: 'Crear cuenta',
-          icon: 'person-add-outline',
-          redirecTo: '/register'
-        });
-
-        this.componentes.unshift({
-          name: 'Iniciar sesión',
-          icon: 'log-in-outline',
-          redirecTo: '/login'
-        });
-  
-      }
+    } else {
+      // Si el usuario no está autenticado, muestra "Iniciar sesión", "Crear cuenta" e "Información" al menú
+      this.estudianteComponentes.push(
+        { name: 'Iniciar sesión', icon: 'log-in-outline', redirecTo: '/login' },
+        { name: 'Crear cuenta', icon: 'person-add-outline', redirecTo: '/register' },
+        { name: 'Información', icon: 'information-circle-outline', redirecTo: '/info' }
+      );
     }
   }
 
   cerrarSesion() {
-    // Llama a la función de cierre de sesión del servicio de autenticación
-    this.authService.logout(); 
+    this.authService.logout();
+  }
 
+  isDocente(): Observable<boolean> {
+    return this.authService.getUserRole().pipe(
+      map(role => role === 'Docente'),
+      startWith(false) // Emite false al principio si aún no se ha completado el observable
+    );
+  }
+
+  actualizarComponentes() {
+    this.verificarOpciones();
   }
 
 }
