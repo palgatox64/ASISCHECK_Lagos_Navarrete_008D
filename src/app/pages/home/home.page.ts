@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   }
 
   get loggedUserName(): string | null {
-    return this.authservice.getLoggedUserName();
+    return sessionStorage.getItem('username');
   }
 
 }

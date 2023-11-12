@@ -30,9 +30,9 @@ export class RegisterPage implements OnInit {
   }
 
   asignaturas = [
-    { id: 1, name: 'PROGRAMACION DE APLICACIONES MOVILES', periodo: '2023-2', horario: 'Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00', image: 'https://imgur.com/mdQqZlJ.png'},
-    { id: 2, name: 'DESARROLLO FULL STACK', periodo: '2023-2', horario: 'Martes 8:00 - 10:00 | Viernes 8:00 - 10:00', image: 'https://imgur.com/xJ3IHJE.png'},
-    { id: 3, name: 'PROGRAMACION DE BASE DE DATOS', periodo: '2023-2', horario: 'Miercoles 8:00 - 10:00', image: 'https://imgur.com/NkFqvD0.png'},
+    { id: 1, name: 'PROGRAMACION DE APLICACIONES MOVILES', periodo: '2023-2', horario: 'Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00', image: 'assets/img/appmovil.png'},
+    { id: 2, name: 'DESARROLLO FULL STACK', periodo: '2023-2', horario: 'Martes 8:00 - 10:00 | Viernes 8:00 - 10:00', image: 'assets/img/fullstack.png'},
+    { id: 3, name: 'PROGRAMACION DE BASE DE DATOS', periodo: '2023-2', horario: 'Miercoles 8:00 - 10:00', image: 'assets/img/database.png'},
   ];
 
 

@@ -90,6 +90,7 @@ export class LoginPage implements OnInit {
             if (this.usuario.password === this.loginForm.value.contrasena) {
               // Si la contraseña coincide, autentica al usuario
               console.log('Usuario autenticado');
+              sessionStorage.setItem('id', this.usuario.id.toString());
               sessionStorage.setItem('name', this.usuario.name);
               sessionStorage.setItem('email', this.usuario.email);
               sessionStorage.setItem('username', this.usuario.username);

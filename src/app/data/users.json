@@ -1,63 +1,46 @@
 {
   "usuarios": [
-    {
+    { 
       "id": 1,
       "name": "Sebastian Navarrete",
-      "role": "Docente",
+      "role": "Estudiante",
       "username": "se.navarrete",
       "email": "se.navarrete@duocuc.cl",
       "password": "dragonforce",
+      "profilePicture": "assets/img/unknown.jpg"
+
+    },
+    {
+      "id": 2,
+      "name": "Wanolo Adidas",
+      "role": "Docente",
+      "username": "wanolo.adidas",
+      "email": "wanolito@gmail.com",
+      "password": "dragonforce",
+      "profilePicture": "assets/img/unknown.jpg",
       "subject": [
         {
           "id": 1,
           "name": "PROGRAMACION DE APLICACIONES MOVILES",
           "periodo": "2023-2",
           "horario": "Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00",
-          "image": "https://imgur.com/mdQqZlJ.png"
+          "image": "assets/img/appmovil.png"
         },
         {
           "id": 2,
           "name": "DESARROLLO FULL STACK",
           "periodo": "2023-2",
           "horario": "Martes 8:00 - 10:00 | Viernes 8:00 - 10:00",
-          "image": "https://imgur.com/xJ3IHJE.png"
+          "image": "assets/img/fullstack.png"
         },
         {
           "id": 3,
           "name": "PROGRAMACION DE BASE DE DATOS",
           "periodo": "2023-2",
           "horario": "Miercoles 8:00 - 10:00",
-          "image": "https://imgur.com/NkFqvD0.png"
+          "image": "assets/img/database.png"
         }
       ]
-    },
-    {
-      "id": 2,
-      "name": "Wanolo Adidas",
-      "role": "Estudiante",
-      "username": "wanolo",
-      "email": "wanolo@gmail.com",
-      "password": "dragonforce",
-      "subject": ""
-    },
-    {
-      "id": 3,
-      "name": "Matias Lagos",
-      "role": "Estudiante",
-      "username": "ilmatias",
-      "email": "ilmatias@gmail.com",
-      "password": "comparini123",
-      "subject": []
-    },
-    {
-      "id": 4,
-      "name": "Eustaquio Habichuelas",
-      "role": "Estudiante",
-      "username": "eu.staquio",
-      "email": "eu.staquio@gmail.com",
-      "password": "dragonforce",
-      "profilePicture": "assets/img/unknown.jpg",
-      "subject": ""
     }
   ]
 }

@@ -80,6 +80,7 @@ export class AuthService {
   
   logout() {
     // Elimina los datos de la sesión en sessionStorage
+    sessionStorage.removeItem('id');
     sessionStorage.removeItem('username'); 
     sessionStorage.removeItem('userrole');
     sessionStorage.removeItem('ingresado');

@@ -16,34 +16,38 @@
   <br><br>
   <div class="profile-container">
     <ion-avatar class="profile-avatar">
-      <img [src]="foto" alt="Avatar">
+      <img [src]="foto || 'assets/img/unknown.jpg'" alt="Avatar">
     </ion-avatar>
+    <input type="file" style="display: none;" id="inputFile">
     <ion-button class="upload-button boton" shape="circle">
-      <ion-icon slot="icon-only" name="pencil" style="width: 100%"></ion-icon>
+      <ion-icon class="custom-icon" slot="icon-only" name="pencil"></ion-icon>
     </ion-button>
+
+    <br>
 
     <ion-list lines="full" class="ion-no-margin">
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Nombre</ion-label>
-        <ion-input [(ngModel)]="nombre" disabled></ion-input>
+        <ion-input [(ngModel)]="nombre" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Usuario</ion-label>
-        <ion-input [(ngModel)]="usuario" disabled></ion-input>
+        <ion-input [(ngModel)]="usuario" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Correo</ion-label>
-        <ion-input [(ngModel)]="correo" disabled></ion-input>
+        <ion-input [(ngModel)]="correo" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
     </ion-list>
     <br>
-    <ion-button class="boton">EDITAR PERFIL</ion-button>
+
+    <ion-button class="boton" (click)="toggleModoEdicion()">
+      {{ modoEdicion ? 'GUARDAR CAMBIOS' : 'EDITAR PERFIL' }}
+    </ion-button>
   </div>
 
   <br>
-
-
 </ion-content>
 
