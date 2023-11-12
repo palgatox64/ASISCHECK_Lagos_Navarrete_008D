@@ -77,6 +77,16 @@ export class AppComponent {
         redirecTo: '/asignaturas'
       });
 
+      const role = this.authService.getLoggedUserRole();
+
+      // Verifica si el usuario tiene el rol "Docente"
+      const isDocente = role === 'Docente';
+
+      // Oculta el elemento "Asignaturas" si el usuario no es un "Docente"
+      if (!isDocente && this.componentes.some(item => item.name === 'Asignaturas')) {
+        this.componentes = this.componentes.filter((item) => item.name !== 'Asignaturas');
+      }
+
       this.componentes.unshift({
         name: 'Home',
         icon: 'home-outline',

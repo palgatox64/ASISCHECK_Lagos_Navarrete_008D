@@ -31,18 +31,18 @@ export class AutorizadoGuard {
       return true;
     }
 
-  validarRol(rolRequerido: string): Observable<boolean | UrlTree> {
-    return from(this.authservice.getUserRole()).pipe(
-      switchMap(role => {
-        if (role === rolRequerido) {
-          return of(true);
-        } else {
-          this.accesoDenegado();
-          return of(false);
-        }
-      })
-    );
-  }
+    private validarRol(rolRequerido: string): boolean | UrlTree {
+      // Obtén el rol del usuario desde sessionStorage
+      const role = this.authservice.getLoggedUserRole();
+  
+      // Verifica si el usuario tiene el rol requerido
+      if (role === rolRequerido) {
+        return true;
+      } else {
+        this.accesoDenegado(); // Puedes redirigir a una página de acceso denegado o cambiar la URL según tus necesidades
+        return false;
+      }
+    }
 
   async debeIniciar() {
     // Muestra una alerta al usuario informando que debe iniciar sesión
