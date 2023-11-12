@@ -29,13 +29,18 @@ const routes: Routes = [
   {
     path: 'asignaturas',
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule),
-    canActivate: [AutorizadoGuard]
+    canActivate: [AutorizadoGuard],
+    data: { validarRol: 'Docente' }
   },
   {
     path: 'recursos',
     loadChildren: () => import('./pages/recursos/recursos.module').then( m => m.RecursosPageModule),
     canActivate: [AutorizadoGuard]
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+
 
 
 

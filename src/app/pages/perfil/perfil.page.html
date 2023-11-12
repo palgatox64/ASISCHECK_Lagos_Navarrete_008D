@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="hamburguesa" slot="icon-only" name="menu-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Perfil</ion-title>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="profile-container">
+    <ion-avatar class="profile-avatar">
+      
+    </ion-avatar>
+    <ion-button expand="full" color="ion-color-iris">
+      Subir Avatar
+    </ion-button>
+
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-item>
+        <ion-label position="stacked" color="ion-color-iris">Nombre y Apellido</ion-label>
+        <ion-input value="Nombre Apellido" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" color="ion-color-iris">Usuario</ion-label>
+        <ion-input value="nombredeusuario" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" color="ion-color-iris">Correo</ion-label>
+        <ion-input type="email" value="correo@ejemplo.com" disabled></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="full" color="ion-color-ultra-violet">
+      Editar Perfil
+    </ion-button>
+  </div>
+
+  <br>
+ 
+  
+  <div class="asischeck-logo">
+    <img src="assets/img/asischecklogo_text.png" alt="logo">
+  </div>
+  <br>
+</ion-content>

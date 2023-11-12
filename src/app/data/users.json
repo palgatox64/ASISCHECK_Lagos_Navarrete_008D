@@ -2,93 +2,52 @@
   "usuarios": [
     {
       "id": 1,
-      "name": "Uzziel Mislep",
-      "role": "Docente",
-      "username": "uz.mislep",
-      "email": "uz.mislep@gmail.com",
-      "password": "12345678",
-      "isactive": false
-    },
-    {
-      "id": 2,
-      "name": "Eustaquio Habichuelas",
-      "role": "Docente",
-      "username": "eu.habichuelas",
-      "email": "eu.habichuelas@gmail.com",
-      "password": "12345678",
-      "isactive": false
-    },
-    {
-      "id": 3,
       "name": "Sebastian Navarrete",
-      "role": "Estudiante",
+      "role": "Docente",
       "username": "se.navarrete",
       "email": "se.navarrete@duocuc.cl",
       "password": "dragonforce",
-      "isactive": false
+      "subject": [
+        {
+          "id": 1,
+          "name": "PROGRAMACION DE APLICACIONES MOVILES",
+          "periodo": "2023-2",
+          "horario": "Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00",
+          "image": "https://imgur.com/mdQqZlJ.png"
+        },
+        {
+          "id": 2,
+          "name": "DESARROLLO FULL STACK",
+          "periodo": "2023-2",
+          "horario": "Martes 8:00 - 10:00 | Viernes 8:00 - 10:00",
+          "image": "https://imgur.com/xJ3IHJE.png"
+        },
+        {
+          "id": 3,
+          "name": "PROGRAMACION DE BASE DE DATOS",
+          "periodo": "2023-2",
+          "horario": "Miercoles 8:00 - 10:00",
+          "image": "https://imgur.com/NkFqvD0.png"
+        }
+      ]
     },
     {
-      "id": 4,
-      "name": "Jimmy Neutron",
+      "id": 2,
+      "name": "Wanolo Adidas",
       "role": "Estudiante",
-      "username": "ji.neutron",
-      "email": "ji.neutron@nick.com",
-      "password": "clorurodesodio",
-      "isactive": false
+      "username": "wanolo",
+      "email": "wanolo@gmail.com",
+      "password": "dragonforce",
+      "subject": ""
     },
     {
-      "id": 5,
-      "name": "Chilly Willy",
-      "role": "Docente",
-      "username": "chilly.willy",
-      "email": "chilly.willy@gmail.com",
-      "password": "12345678",
-      "isactive": false
-    },
-    {
-      "id": 6,
-      "name": "Don Aroldo",
-      "role": "Docente",
-      "username": "don.aroldo",
-      "email": "don.aroldo@gmail.com",
-      "password": "donaroldo123",
-      "isactive": false
-    },
-    {
-      "id": 7,
-      "name": "Gonzalo Salazar",
+      "id": 3,
+      "name": "Matias Lagos",
       "role": "Estudiante",
-      "username": "jun.kok",
-      "email": "gona@gmail.cl",
-      "password": "elpapu123",
-      "isactive": false
-    },
-    {
-      "id": 8,
-      "name": "Patricio Pinto",
-      "role": "Estudiante",
-      "username": "become.pneuma",
-      "email": "become.pneuma@gmail.com",
-      "password": "12345678",
-      "isactive": false
-    },
-    {
-      "id": 9,
-      "name": "Enrique Pincheira",
-      "role": "Estudiante",
-      "username": "el.pincheira",
-      "email": "enrique.pincheira@gmail.com",
-      "password": "12345678",
-      "isactive": false
-    },
-    {
-      "id": 10,
-      "name": "ramiro diaz",
-      "role": "Estudiante",
-      "username": "ra.diaz",
-      "email": "ra.diaz@gmail.com",
-      "password": "12345678",
-      "isactive": false
+      "username": "ilmatias",
+      "email": "ilmatias@gmail.com",
+      "password": "comparini123",
+      "subject": []
     }
   ]
 }

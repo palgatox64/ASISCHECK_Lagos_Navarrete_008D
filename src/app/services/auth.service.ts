@@ -5,6 +5,9 @@ import { Users } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';  // Agrega esta línea
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +35,27 @@ export class AuthService {
   GetUserById(codigo: any):Observable<Users>{
     return this.httpclient.get<Users>(`${environment.apiUrl}/usuarios/?username=${codigo}`);
   }
+
+  getSubjects(): Observable<string[]> {
+    const username = this.getLoggedUserName();
+    if (username) {
+      return this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios/?username=${username}`).pipe(
+        map(users => {
+          const user = users[0]; 
+          console.log('Respuesta del servidor:', user); 
+          return user?.subject || [];
+        })
+      );
+    } else {
+      return of([]); // Retorna un observable vacío si no hay un nombre de usuario autenticado
+    }
+  }
+
+
+  getLoggedUserRole(): string | null {
+    return sessionStorage.getItem('userrole');
+  }
+
 
 
   // Método para establecer el nombre del usuario cuando inicia sesión
