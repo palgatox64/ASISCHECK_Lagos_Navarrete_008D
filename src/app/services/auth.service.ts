@@ -84,7 +84,9 @@ export class AuthService {
     sessionStorage.removeItem('username'); 
     sessionStorage.removeItem('userrole');
     sessionStorage.removeItem('ingresado');
+    sessionStorage.removeItem('password');
     sessionStorage.removeItem('name');
+    sessionStorage.removeItem('subject');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('profilePicture');
 

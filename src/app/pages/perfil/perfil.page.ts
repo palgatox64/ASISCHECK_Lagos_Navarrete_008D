@@ -15,8 +15,11 @@ export class PerfilPage implements OnInit {
   id: string = '';
   nombre: string = '';
   usuario: string = '';
+  rol: string = '';
   correo: string = '';
   foto: string = '';
+  password: string = '';
+  asignatura: string[] = [];
 
   modoEdicion: boolean = false;
 
@@ -35,6 +38,9 @@ export class PerfilPage implements OnInit {
     this.usuario = sessionStorage.getItem('username') || '';
     this.correo = sessionStorage.getItem('email') || '';
     this.foto = sessionStorage.getItem('profilePicture') || '';
+    this.asignatura = JSON.parse(sessionStorage.getItem('subject') || '[]');
+    this.rol = sessionStorage.getItem('userrole') || '';
+    this.password = sessionStorage.getItem('password') || '';
   }
 
   mostrarMenu() {
@@ -52,7 +58,10 @@ export class PerfilPage implements OnInit {
     const datosActualizados = {
       name: this.nombre,
       username: this.usuario,
+      role: this.rol,
+      password: this.password,
       email: this.correo,
+      subject: this.asignatura,
       profilePicture: this.foto
     };
 
@@ -61,6 +70,13 @@ export class PerfilPage implements OnInit {
         // Manejar la respuesta del servidor (usuarioActualizado)
         console.log('Usuario actualizado:', usuarioActualizado);
         // Puedes actualizar las variables locales si es necesario
+        sessionStorage.setItem('name', this.nombre);
+        sessionStorage.setItem('username', this.usuario);
+        sessionStorage.setItem('userrole', this.rol);
+        sessionStorage.setItem('password', this.password);
+        sessionStorage.setItem('email', this.correo);
+        sessionStorage.setItem('subject', JSON.stringify(this.asignatura));
+        sessionStorage.setItem('profilePicture', this.foto);
         await this.cambiosGuardados();
         this.modoEdicion = !this.modoEdicion;
       },

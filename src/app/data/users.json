@@ -1,23 +1,21 @@
 {
   "usuarios": [
     {
-      "id": 1,
       "name": "Sebastian Navarrete",
-      "role": "Estudiante",
       "username": "se.navarrete",
-      "email": "se.navarrete@duocuc.cl",
+      "role": "Estudiante",
       "password": "$2a$10$1SEB5Am34lNMgcewc/V9Q.ffyaJqgl/PdpwRw0M/4C8dCggoZZsRG",
+      "email": "se.navarrete@duocuc.cl",
+      "subject": [],
       "profilePicture": "assets/img/unknown.jpg",
-      "subject": ""
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Wanolo Adidas",
-      "role": "Docente",
+      "name": "Wanolo Adidas Nike",
       "username": "wanolo.adidas",
-      "email": "wanolito@gmail.com",
+      "role": "Docente",
       "password": "$2a$10$O.ARBBdzbZH4Qs1lM/ndFeu5Ev0U2CPzjxdUpdyFSqya9tUqWmHlK",
-      "profilePicture": "assets/img/unknown.jpg",
+      "email": "wanolito@gmail.com",
       "subject": [
         {
           "id": 1,
@@ -40,7 +38,9 @@
           "horario": "Miercoles 8:00 - 10:00",
           "image": "assets/img/database.png"
         }
-      ]
+      ],
+      "profilePicture": "assets/img/unknown.jpg",
+      "id": 2
     }
   ]
 }

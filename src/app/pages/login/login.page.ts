@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
     username: '',
     email: '',
     password: '',
+    subject: [],
     profilePicture: '',
     isactive: true,
   };
@@ -85,6 +86,7 @@ export class LoginPage implements OnInit {
               role: this.userdata[0].role,
               username: this.userdata[0].username,
               email: this.userdata[0].email,
+              subject: this.userdata[0].subject,
               password: this.userdata[0].password,
               profilePicture: this.userdata[0].profilePicture,
               isactive: this.userdata[0].isactive,
@@ -106,6 +108,7 @@ export class LoginPage implements OnInit {
               sessionStorage.setItem('username', this.usuario.username);
               sessionStorage.setItem('password', this.usuario.password);
               sessionStorage.setItem('userrole', this.usuario.role);
+              sessionStorage.setItem('subject', JSON.stringify(this.usuario.subject));
               sessionStorage.setItem('profilePicture', this.usuario.profilePicture);
               sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
