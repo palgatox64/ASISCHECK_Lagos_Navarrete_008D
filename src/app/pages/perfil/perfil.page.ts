@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, AlertController } from '@ionic/angular';
 import { ApiCrudService } from 'src/app/services/api-crud.service';
 import { LoadingController } from '@ionic/angular';
-import { FileInput } from 'ngx-material-file-input';
+
 
 @Component({
   selector: 'app-perfil',
