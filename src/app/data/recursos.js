@@ -1,20 +1,42 @@
 const express = require('express');
-const cors = require('cors'); // Agrega esta línea
+const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
 const app = express();
 const port = 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:8100',  
+  origin: 'http://localhost:8100',
 };
 
 app.use(cors(corsOptions));
 
+// Configuración de multer para almacenar las imágenes en la carpeta 'uploads'
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
+
 // Recursos de estudio (simulados en un arreglo)
 const recursosDeEstudio = [
-  { id: 1, titulo: 'Getting Started with Python', tipo: 'PDF', enlace: 'https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/DEVNET-1893d.pdf', imagen: 'https://i.imgur.com/aOL57Mp.png' },
-  { id: 2, titulo: 'The Oxford 3000', tipo: 'PDF', enlace: 'https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/American_Oxford_3000.pdf', imagen: 'https://i.imgur.com/IaDTO3j.png' },
-
+  // ... (otros recursos)
 ];
+
+// Ruta para subir una imagen y obtener la URL
+app.post('/upload', upload.single('imagen'), (req, res) => {
+  if (req.file) {
+    const imageUrl = 'http://localhost:3000/uploads/' + req.file.filename;
+    res.json({ imageUrl });
+  } else {
+    res.status(400).json({ error: 'No se pudo subir la imagen' });
+  }
+});
 
 // Ruta para obtener todos los recursos de estudio
 app.get('/recursos', (req, res) => {

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Users } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,13 @@ export class ApiCrudService {
     return this.httpclient.put<Users>(`${environment.apiUrl}/usuarios/${id}`, datosActualizados);
   }
 
+  SubirImagen(archivo: File): Observable<{ imageUrl: string }> {
+    const formData = new FormData();
+    formData.append('imagen', archivo);
+
+    return this.httpclient.post<{ imageUrl: string }>(`${environment.apiRecursos}/upload`, formData);
+  }
 
 
-  
 
 }

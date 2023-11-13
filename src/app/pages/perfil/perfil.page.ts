@@ -4,6 +4,7 @@ import { ApiCrudService } from 'src/app/services/api-crud.service';
 import { LoadingController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -47,10 +48,56 @@ export class PerfilPage implements OnInit {
     this.menuController.open('first');
   }
 
-    // Método para actualizar la foto de perfil
-    actualizarFotoPerfil() {
-      // Lógica para actualizar la foto de perfil
-    }
+ 
+  // async actualizarFotoPerfil(fileInput: FileInput) {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Cargando...',
+  //     duration: 1500,
+  //     spinner: 'crescent',
+  //   });
+  
+  //   await loading.present();
+  
+  //   // Simula una operación de carga
+  
+  //   // Cierra la ventana de carga después de un tiempo (simulado)
+  //   setTimeout(async () => {
+  //     loading.dismiss();
+  
+  //     const idUsuario = Number(this.id);
+  
+  //     // Verifica si se seleccionó un archivo
+  //     if (fileInput.files.length > 0) {
+  //       const archivo = fileInput.files[0].file;
+  
+  //       // Llama al servicio para subir la imagen y obtener la URL
+  //       this.apiCrudService.SubirImagen(archivo).subscribe(
+  //         async (response) => {
+  //           const nuevaFoto = response.imageUrl;
+  
+  //           // Luego, puedes usar la URL de la imagen para actualizar el perfil del usuario
+  //           const datosActualizados = { profilePicture: nuevaFoto };
+  //           this.apiCrudService.ActualizarUsuario(idUsuario, datosActualizados).subscribe(
+  //             async (usuarioActualizado) => {
+  //               console.log('Foto de perfil actualizada:', usuarioActualizado);
+  //               sessionStorage.setItem('profilePicture', nuevaFoto);
+  //               await this.cambiosGuardados();
+  //             },
+  //             (error) => {
+  //               console.error('Error al actualizar la foto de perfil:', error);
+  //             }
+  //           );
+  //         },
+  //         (error) => {
+  //           console.error('Error al subir la imagen:', error);
+  //         }
+  //       );
+  //     } else {
+  //       // Mostrar un mensaje de error si no se seleccionó ningún archivo
+  //       this.mostrarAlerta('Error', 'Selecciona una imagen para actualizar tu foto de perfil.');
+  //     }
+  //   }, 1500);
+  // }
 
     // Método para actualizar el nombre, usuario y correo
   actualizarDatosUsuario() {

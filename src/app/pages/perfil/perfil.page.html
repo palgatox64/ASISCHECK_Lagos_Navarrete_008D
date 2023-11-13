@@ -15,13 +15,18 @@
 <ion-content [fullscreen]="true">
   <br><br>
   <div class="profile-container">
-    <ion-avatar class="profile-avatar">
-      <img [src]="foto || 'assets/img/unknown.jpg'" alt="Avatar">
-    </ion-avatar>
-    <input type="file" style="display: none;" id="inputFile">
-    <ion-button class="upload-button boton" shape="circle">
-      <ion-icon class="custom-icon" slot="icon-only" name="pencil"></ion-icon>
-    </ion-button>
+    <div class="avatar-container">
+      <ion-avatar class="profile-avatar">
+        <img [src]="foto" alt="Avatar">
+      </ion-avatar>
+      <label for="fileInput">
+        <ion-button class="upload-button boton" shape="circle">
+          <img src="assets/img/white-plus.jpg" alt="plus">
+        </ion-button>
+      </label>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+    </div>
+  
 
     <br>
 
