@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Users } from '../interfaces/interfaces';
 import { ApiCrudService } from 'src/app/services/api-crud.service';
+import * as bcrypt from 'bcryptjs';
+
+
+
 
 
 @Component({
@@ -99,6 +103,10 @@ export class RegisterPage implements OnInit {
           }
         } else {
           // Envía el formulario si todo está en orden
+          // Encripta la contraseña antes de almacenarla
+          const hashedPassword = await bcrypt.hash(contrasena, 10);
+          this.newUsuario.password = hashedPassword;
+
           console.log('Formulario válido. Enviar datos al servidor.');
           this.newUsuario.subject = this.registroForm.get('subject')?.value;
           this.registroExitoso();

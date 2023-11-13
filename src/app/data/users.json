@@ -1,14 +1,14 @@
 {
   "usuarios": [
-    { 
+    {
       "id": 1,
       "name": "Sebastian Navarrete",
       "role": "Estudiante",
       "username": "se.navarrete",
       "email": "se.navarrete@duocuc.cl",
-      "password": "dragonforce",
-      "profilePicture": "assets/img/unknown.jpg"
-
+      "password": "$2a$10$1SEB5Am34lNMgcewc/V9Q.ffyaJqgl/PdpwRw0M/4C8dCggoZZsRG",
+      "profilePicture": "assets/img/unknown.jpg",
+      "subject": ""
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "role": "Docente",
       "username": "wanolo.adidas",
       "email": "wanolito@gmail.com",
-      "password": "dragonforce",
+      "password": "$2a$10$O.ARBBdzbZH4Qs1lM/ndFeu5Ev0U2CPzjxdUpdyFSqya9tUqWmHlK",
       "profilePicture": "assets/img/unknown.jpg",
       "subject": [
         {
