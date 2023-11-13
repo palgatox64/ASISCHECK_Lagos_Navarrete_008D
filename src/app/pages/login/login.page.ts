@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular';
 
+import * as bcrypt from 'bcryptjs';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -27,6 +30,8 @@ export class LoginPage implements OnInit {
     username: '',
     email: '',
     password: '',
+    subject: [],
+    profilePicture: '',
     isactive: true,
   };
 
@@ -67,7 +72,7 @@ export class LoginPage implements OnInit {
     if (this.loginForm.valid) {
       this.authservice
         .GetUserById(this.loginForm.value.usuario)
-        .subscribe((resp) => {
+        .subscribe(async (resp) => {
           // Realiza una solicitud para obtener datos de usuario
           this.userdata = resp;
           console.log(this.userdata);
@@ -81,15 +86,30 @@ export class LoginPage implements OnInit {
               role: this.userdata[0].role,
               username: this.userdata[0].username,
               email: this.userdata[0].email,
+              subject: this.userdata[0].subject,
               password: this.userdata[0].password,
+              profilePicture: this.userdata[0].profilePicture,
               isactive: this.userdata[0].isactive,
             };
 
-            if (this.usuario.password === this.loginForm.value.contrasena) {
-              // Si la contraseña coincide, autentica al usuario
+             // Utiliza bcryptjs para comparar contraseñas
+            const passwordMatch = await bcrypt.compare(
+              this.loginForm.value.contrasena,
+              this.usuario.password
+            );
+
+
+
+            if (passwordMatch) {
               console.log('Usuario autenticado');
+              sessionStorage.setItem('id', this.usuario.id.toString());
+              sessionStorage.setItem('name', this.usuario.name);
+              sessionStorage.setItem('email', this.usuario.email);
               sessionStorage.setItem('username', this.usuario.username);
+              sessionStorage.setItem('password', this.usuario.password);
               sessionStorage.setItem('userrole', this.usuario.role);
+              sessionStorage.setItem('subject', JSON.stringify(this.usuario.subject));
+              sessionStorage.setItem('profilePicture', this.usuario.profilePicture);
               sessionStorage.setItem('ingresado', 'true');
               this.showToast('Sesión Iniciada');
               this.authservice.setLoginStatus(true);

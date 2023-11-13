@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Users } from '../interfaces/interfaces';
 import { ApiCrudService } from 'src/app/services/api-crud.service';
+import * as bcrypt from 'bcryptjs';
+
+
+
 
 
 @Component({
@@ -26,12 +30,13 @@ export class RegisterPage implements OnInit {
     username: '',
     email: '',
     password: '',
+    profilePicture: 'assets/img/unknown.jpg',
   }
 
   asignaturas = [
-    { id: 1, name: 'PROGRAMACION DE APLICACIONES MOVILES', periodo: '2023-2', horario: 'Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00', image: 'https://imgur.com/mdQqZlJ.png'},
-    { id: 2, name: 'DESARROLLO FULL STACK', periodo: '2023-2', horario: 'Martes 8:00 - 10:00 | Viernes 8:00 - 10:00', image: 'https://imgur.com/xJ3IHJE.png'},
-    { id: 3, name: 'PROGRAMACION DE BASE DE DATOS', periodo: '2023-2', horario: 'Miercoles 8:00 - 10:00', image: 'https://imgur.com/NkFqvD0.png'},
+    { id: 1, name: 'PROGRAMACION DE APLICACIONES MOVILES', periodo: '2023-2', horario: 'Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00', image: 'assets/img/appmovil.png'},
+    { id: 2, name: 'DESARROLLO FULL STACK', periodo: '2023-2', horario: 'Martes 8:00 - 10:00 | Viernes 8:00 - 10:00', image: 'assets/img/fullstack.png'},
+    { id: 3, name: 'PROGRAMACION DE BASE DE DATOS', periodo: '2023-2', horario: 'Miercoles 8:00 - 10:00', image: 'assets/img/database.png'},
   ];
 
 
@@ -98,6 +103,10 @@ export class RegisterPage implements OnInit {
           }
         } else {
           // Envía el formulario si todo está en orden
+          // Encripta la contraseña antes de almacenarla
+          const hashedPassword = await bcrypt.hash(contrasena, 10);
+          this.newUsuario.password = hashedPassword;
+
           console.log('Formulario válido. Enviar datos al servidor.');
           this.newUsuario.subject = this.registroForm.get('subject')?.value;
           this.registroExitoso();

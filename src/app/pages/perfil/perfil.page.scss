@@ -32,11 +32,49 @@ ion-title {
       margin-top: 1%;
     }
 
-.profile-avatar {
-  justify-content: center;
+    
+.profile-container {
   text-align: center;
+}
+
+.profile-avatar {
+  width: 150px; /* ajusta el tamaño según tus necesidades */
+  height: 150px; /* ajusta el tamaño según tus necesidades */
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto; /* para centrar el avatar */
+  position: relative;
+}
+
+// .profile-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.upload-button {
+  position: absolute;
+  top: 210px;
+  right: 85px;
+  margin: 0; /* Restaura el margen predeterminado si es necesario */
+}
+
+ion-button[shape=circle] {
+  --border-radius: 50%;
+  width: 46px;
+  height: 46px;
+
 
 }
-    
 
+.boton {
+  --background: #615ACDff;
+}
 

@@ -1,53 +1,49 @@
 {
   "usuarios": [
     {
-      "id": 1,
       "name": "Sebastian Navarrete",
-      "role": "Docente",
       "username": "se.navarrete",
+      "role": "Estudiante",
+      "password": "$2a$10$1SEB5Am34lNMgcewc/V9Q.ffyaJqgl/PdpwRw0M/4C8dCggoZZsRG",
       "email": "se.navarrete@duocuc.cl",
-      "password": "dragonforce",
+      "subject": [],
+      "profilePicture": "assets/img/unknown.jpg",
+      "id": 1
+    },
+    {
+      "name": "Wanolo Adidas",
+      "username": "wanolo.adidas",
+      "role": "Docente",
+      "password": "$2a$10$O.ARBBdzbZH4Qs1lM/ndFeu5Ev0U2CPzjxdUpdyFSqya9tUqWmHlK",
+      "email": "wanolito@gmail.com",
       "subject": [
         {
           "id": 1,
           "name": "PROGRAMACION DE APLICACIONES MOVILES",
           "periodo": "2023-2",
           "horario": "Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00",
-          "image": "https://imgur.com/mdQqZlJ.png"
+          "image": "assets/img/appmovil.png"
         },
         {
           "id": 2,
           "name": "DESARROLLO FULL STACK",
           "periodo": "2023-2",
           "horario": "Martes 8:00 - 10:00 | Viernes 8:00 - 10:00",
-          "image": "https://imgur.com/xJ3IHJE.png"
+          "image": "assets/img/fullstack.png"
         },
         {
           "id": 3,
           "name": "PROGRAMACION DE BASE DE DATOS",
           "periodo": "2023-2",
           "horario": "Miercoles 8:00 - 10:00",
-          "image": "https://imgur.com/NkFqvD0.png"
+          "image": "assets/img/database.png"
         }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Wanolo Adidas",
-      "role": "Estudiante",
-      "username": "wanolo",
-      "email": "wanolo@gmail.com",
-      "password": "dragonforce",
-      "subject": ""
-    },
-    {
-      "id": 3,
-      "name": "Matias Lagos",
-      "role": "Estudiante",
-      "username": "ilmatias",
-      "email": "ilmatias@gmail.com",
-      "password": "comparini123",
-      "subject": []
+      ],
+      "profilePicture": "assets/img/unknown.jpg",
+      "id": 2
     }
+  ],
+  "subirImagen": [
+    {}
   ]
 }

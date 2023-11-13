@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Users } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,14 @@ export class ApiCrudService {
     return this.httpclient.post<Users>(`${environment.apiUrl}/usuarios`, newUsuario);
   }
 
-  
+  // Método para actualizar los datos del usuario.
+  // Toma el ID del usuario y un objeto `datosActualizados` de tipo `Users`.
+  // Devuelve un observable de tipo `Users`.
+  ActualizarUsuario(id: number, datosActualizados: Partial<Users>): Observable<Users> {
+    return this.httpclient.put<Users>(`${environment.apiUrl}/usuarios/${id}`, datosActualizados);
+  }
+
+
+
 
 }

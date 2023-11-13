@@ -13,41 +13,46 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <br><br>
   <div class="profile-container">
-    <ion-avatar class="profile-avatar">
-      
-    </ion-avatar>
-    <ion-button expand="full" color="ion-color-iris">
-      Subir Avatar
-    </ion-button>
+    <div class="avatar-container">
+      <ion-avatar class="profile-avatar">
+        <img [src]="foto" alt="Avatar">
+      </ion-avatar>
+      <label for="fileInput">
+        <ion-button class="upload-button boton" shape="circle">
+          <img src="assets/img/white-plus.jpg" alt="plus">
+        </ion-button>
+      </label>
+
+    </div>
+  
+
+    <br>
 
     <ion-list lines="full" class="ion-no-margin">
       <ion-item>
-        <ion-label position="stacked" color="ion-color-iris">Nombre y Apellido</ion-label>
-        <ion-input value="Nombre Apellido" disabled></ion-input>
+        <ion-label position="stacked" color="ion-color-iris">Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Usuario</ion-label>
-        <ion-input value="nombredeusuario" disabled></ion-input>
+        <ion-input [(ngModel)]="usuario" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked" color="ion-color-iris">Correo</ion-label>
-        <ion-input type="email" value="correo@ejemplo.com" disabled></ion-input>
+        <ion-input [(ngModel)]="correo" [disabled]="!modoEdicion"></ion-input>
       </ion-item>
     </ion-list>
+    <br>
 
-    <ion-button expand="full" color="ion-color-ultra-violet">
-      Editar Perfil
+    <ion-button class="boton" (click)="toggleModoEdicion()">
+      {{ modoEdicion ? 'GUARDAR CAMBIOS' : 'EDITAR INFORMACIÓN' }}
     </ion-button>
   </div>
 
   <br>
- 
-  
-  <div class="asischeck-logo">
-    <img src="assets/img/asischecklogo_text.png" alt="logo">
-  </div>
-  <br>
 </ion-content>
+
