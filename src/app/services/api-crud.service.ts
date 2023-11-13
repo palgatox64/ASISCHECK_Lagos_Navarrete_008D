@@ -33,12 +33,6 @@ export class ApiCrudService {
     return this.httpclient.put<Users>(`${environment.apiUrl}/usuarios/${id}`, datosActualizados);
   }
 
-  SubirImagen(archivo: File): Observable<{ imageUrl: string }> {
-    const formData = new FormData();
-    formData.append('imagen', archivo);
-
-    return this.httpclient.post<{ imageUrl: string }>(`${environment.apiRecursos}/upload`, formData);
-  }
 
 
 

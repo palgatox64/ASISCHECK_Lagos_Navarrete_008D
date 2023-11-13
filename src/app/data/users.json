@@ -43,9 +43,7 @@
       "id": 2
     }
   ],
-
-  "subirImagen": [{
-    
-  }]
-
+  "subirImagen": [
+    {}
+  ]
 }
