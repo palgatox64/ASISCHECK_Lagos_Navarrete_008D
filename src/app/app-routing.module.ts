@@ -42,6 +42,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
     canActivate: [AutorizadoGuard]
   },
+  {
+    path: 'generar-qr',
+    loadChildren: () => import('./pages/generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule),
+    canActivate: [AutorizadoGuard],
+    data: { validarRol: 'Docente' }
+  },
+  {
+    path: 'leer-qr',
+    loadChildren: () => import('./pages/leer-qr/leer-qr.module').then( m => m.LeerQrPageModule),
+    canActivate: [AutorizadoGuard]
+
+  },
+
 
 
 
