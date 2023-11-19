@@ -15,7 +15,7 @@
 <ion-content [fullscreen]="true">
     
   <!-- Contenedor del código QR con tamaño fijo -->
-  <div class="qr-container">
+  <div class="qr-container" *ngIf="mostrarQR">
     <ion-card class="ion-text-center">
       <ion-card-content>
         <qrcode [qrdata]="mensaje" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>

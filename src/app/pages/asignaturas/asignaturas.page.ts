@@ -25,6 +25,7 @@ export class AsignaturasPage implements OnInit {
   ionViewWillEnter() {
     
     this.mostrarAsignaturas();
+    
   }
 
   mostrarAsignaturas() {

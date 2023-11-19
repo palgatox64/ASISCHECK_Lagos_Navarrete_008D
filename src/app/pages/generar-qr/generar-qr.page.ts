@@ -4,6 +4,10 @@ import { ApiCrudService } from 'src/app/services/api-crud.service';
 import { QrCodes } from '../interfaces/interfaces';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
+import { LoadingController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-generar-qr',
@@ -13,6 +17,7 @@ import { Router } from '@angular/router';
 export class GenerarQrPage implements OnInit {
 
   public mensaje: string = '';
+  public mostrarQR: boolean = false;
 
   newQrCode: QrCodes = {
     id: 0,
@@ -27,7 +32,8 @@ export class GenerarQrPage implements OnInit {
     texto: '',
   }
 
-  constructor(private menuController: MenuController, private apiCrud: ApiCrudService, private alertController: AlertController, private router: Router) { }
+  constructor(private menuController: MenuController, private apiCrud: ApiCrudService,
+             private loadingController: LoadingController, private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
 
@@ -37,7 +43,12 @@ export class GenerarQrPage implements OnInit {
     this.nombreUsuario = sessionStorage.getItem('name') || '';
   }
 
+  ionViewWillLeave() { 
+    this.ocultarQR();
+  }
+
   generarQr() {
+
     this.newQrCode.name = this.nombreUsuario;
     this.newQrCode.dateTime = new Date(); 
      // Recupera el objeto asignaturaQr del sessionStorage
@@ -53,11 +64,16 @@ export class GenerarQrPage implements OnInit {
        }
      }
 
+    const uniqueId = uuidv4();
+
+
+
     this.apiCrud.CrearQrCode(this.newQrCode).subscribe(
       (response) => {
         console.log('QR creado exitosamente', response);
-        this.data.texto = response.subject;
+        this.data.texto = response.subject + '_' + uniqueId ;
         this.mensaje=this.data.texto;
+        this.mostrarQR = true;
         this.mostrarMensaje('QR creado exitosamente', 'Se ha almacenado el QR');
       },
       (error) => {
@@ -84,5 +100,10 @@ export class GenerarQrPage implements OnInit {
   volver() {
     this.router.navigate(['/asignaturas']);
   }
+
+  private ocultarQR() {
+    this.mostrarQR = false;
+  }
+
 
 }
