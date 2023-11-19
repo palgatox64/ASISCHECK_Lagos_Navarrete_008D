@@ -68,7 +68,7 @@ export class PerfilPage implements OnInit {
       async(usuarioActualizado) => {
         // Manejar la respuesta del servidor (usuarioActualizado)
         console.log('Usuario actualizado:', usuarioActualizado);
-        // Puedes actualizar las variables locales si es necesario
+        // Actualizar las variables locales 
         sessionStorage.setItem('name', this.nombre);
         sessionStorage.setItem('username', this.usuario);
         sessionStorage.setItem('userrole', this.rol);
@@ -89,7 +89,7 @@ export class PerfilPage implements OnInit {
   async toggleModoEdicion() {
     const loading = await this.loadingController.create({
       message: 'Cargando...',
-      duration: 1500, // Ajusta la duración según tus necesidades
+      duration: 1500, 
       spinner: 'crescent' 
     });
   
@@ -108,7 +108,7 @@ export class PerfilPage implements OnInit {
         // Si el modo de edición no está activo, simplemente cambia el modo de edición
         this.modoEdicion = !this.modoEdicion;
       }
-    }, 1500); // Ajusta el tiempo según tus necesidades
+    }, 1500); 
   }
   
   

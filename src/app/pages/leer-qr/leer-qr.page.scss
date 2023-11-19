@@ -1,0 +1,71 @@
+* {
+  --ion-color-tertiary: #615ACDff;
+}
+
+ion-toolbar.ios {
+  height: 76px; 
+}
+
+ion-title {
+
+  color: white;
+
+}
+ion-card {
+  --background: #5750CCff;
+  --color: white;
+  margin-bottom: 10%;
+}
+ion-card-header{
+  --background: #5750CCff;
+  --color: white;
+}
+ion-card-title{
+  --background: #5750CCff;
+  --color: white;
+  font-weight: bolder;
+  font-size: 150%;
+  }
+
+.boton-content {
+  justify-content: center;
+  text-align: center;
+}
+
+.boton {
+  --background: #615ACDff;
+  width: 70%;
+  margin-bottom: 70px; 
+}
+
+
+  .asischeck-logo{
+      width: 65%;
+      display: block;
+      margin: auto;
+      margin-top: 1%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding-bottom: 30px;
+    }
+
+.generar-qr {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 80%;
+}
+
+.volver {
+  --background: #615ACDff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 60%;
+}
+
+
