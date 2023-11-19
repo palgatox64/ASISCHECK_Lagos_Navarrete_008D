@@ -14,10 +14,32 @@
 
 <ion-content [fullscreen]="true">
     
- 
-  
-    <div class="asischeck-logo">
-      <img src="assets/img/asischecklogo_text.png" alt="logo">
-    </div>
-    <br>
+  <!-- Contenedor del código QR con tamaño fijo -->
+  <div class="qr-container">
+    <ion-card class="ion-text-center">
+      <ion-card-content>
+        <qrcode [qrdata]="mensaje" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Botón para generar el código QR -->
+  <ion-button class="generar-qr" (click)="generarQr()" color="success" shape="round">
+    Generar QR
+  </ion-button>
+
+  <br>
+
+  <ion-button class="volver" (click)="volver()" shape="round">
+    Volver
+  </ion-button>
+
+  <br><br>
+
+  <!-- Logo -->
+  <div class="asischeck-logo" style="text-align: center; justify-content: center;">
+    <img src="assets/img/asischecklogo_text.png" alt="logo">
+  </div>
+  <br>
+
 </ion-content>

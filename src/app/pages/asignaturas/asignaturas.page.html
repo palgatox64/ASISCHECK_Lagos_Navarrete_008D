@@ -24,6 +24,11 @@
         <p>Periodo: {{ asignatura.periodo }}</p>
         <p>Horario: {{ asignatura.horario }}</p>
       </ion-card-content>
+      <p style="text-align: center; justify-content: center;">
+        <ion-button class="boton-qr" (click)="irAGenerarQR(asignatura)" color="success" shape="round" > 
+          Registrar Asistencia
+        </ion-button>
+      </p>
     </ion-card>
  
   
