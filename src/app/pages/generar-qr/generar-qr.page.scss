@@ -15,6 +15,7 @@ ion-card {
   --background: #5750CCff;
   --color: white;
   margin-bottom: 10%;
+  width: fit-content;
 }
 ion-card-header{
   --background: #5750CCff;
@@ -35,37 +36,49 @@ ion-card-title{
 .boton {
   --background: #615ACDff;
   width: 70%;
-  margin-bottom: 70px; 
+  margin-bottom: 10px; 
 }
 
-
-  .asischeck-logo{
-      width: 65%;
-      display: block;
-      margin: auto;
-      margin-top: 1%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding-bottom: 30px;
-    }
-
-.generar-qr {
+.botones {
+  justify-content: center;
+  text-align: center;
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
-  padding-bottom: 80%;
+  bottom: 0;
+}
+
+.qr-container {
+  justify-content: center;
+  text-align: center;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.asischeck-logo{
+  width: 65%;
+  display: block;
+  padding-top: 15%;
+  margin: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.generar-qr {
+
+width: 70%;
+padding-bottom: 5%;
 }
 
 .volver {
   --background: #615ACDff;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: 60%;
+  padding-bottom: 25%;
+  width: 70%;
 }
+
 
 
