@@ -43,7 +43,12 @@
       "id": 2
     }
   ],
-  "subirImagen": [
-    {}
+  "qr-codes": [
+    {
+      "id": 1,
+      "name": "Wanolo Adidas",
+      "subject": "DESARROLLO FULL STACK",
+      "dateTime": "2023-11-20T00:55:24.252Z"
+    }
   ]
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Users } from '../pages/interfaces/interfaces';
+import { Users, QrCodes } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 
@@ -33,7 +33,10 @@ export class ApiCrudService {
     return this.httpclient.put<Users>(`${environment.apiUrl}/usuarios/${id}`, datosActualizados);
   }
 
+  CrearQrCode(newQrCode: QrCodes): Observable<QrCodes>{
+    return this.httpclient.post<QrCodes>(`${environment.apiUrl}/qr-codes`, newQrCode);
 
+  }
 
 
 }

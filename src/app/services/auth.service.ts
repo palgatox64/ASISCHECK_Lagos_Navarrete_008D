@@ -89,7 +89,7 @@ export class AuthService {
     sessionStorage.removeItem('subject');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('profilePicture');
-
+    sessionStorage.removeItem('asignaturaQr');
   }
 
 }

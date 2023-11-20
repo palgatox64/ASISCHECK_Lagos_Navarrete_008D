@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AsignaturasPage implements OnInit {
   asignaturas: any[] = [];
   asignaturasLoaded: boolean = false;
 
-  constructor( private menuController: MenuController, private authService: AuthService) {  }
+  constructor( private menuController: MenuController, private authService: AuthService, private router: Router) {  }
 
   ngOnInit() {
     
@@ -24,6 +25,7 @@ export class AsignaturasPage implements OnInit {
   ionViewWillEnter() {
     
     this.mostrarAsignaturas();
+    
   }
 
   mostrarAsignaturas() {
@@ -40,6 +42,13 @@ export class AsignaturasPage implements OnInit {
         }
       }
     );
+  }
+
+  irAGenerarQR(asignatura: any) {
+    
+    sessionStorage.setItem('asignaturaQr', JSON.stringify(asignatura)); // Almacena la asignatura en sessionStorage
+
+    this.router.navigate(['/generar-qr'], { state: { asignatura: asignatura } });
   }
 
   mostrarMenu(){

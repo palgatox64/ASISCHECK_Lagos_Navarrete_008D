@@ -70,11 +70,18 @@ export class AppComponent {
         icon: 'person-outline',
         redirecTo: '/perfil'
       });
+
       
       this.componentes.unshift({
         name: 'Recursos',
         icon: 'search-outline',
         redirecTo: '/recursos'
+      });
+
+      this.componentes.unshift({
+        name: 'Registrar Asistencia',
+        icon: 'qr-code-outline',
+        redirecTo: '/leer-qr'
       });
 
       this.componentes.unshift({
@@ -88,9 +95,18 @@ export class AppComponent {
       // Verifica si el usuario tiene el rol "Docente"
       const isDocente = role === 'Docente';
 
+      const isEstudiante = role === 'Estudiante';
+
       // Oculta el elemento "Asignaturas" si el usuario no es un "Docente"
       if (!isDocente && this.componentes.some(item => item.name === 'Asignaturas')) {
         this.componentes = this.componentes.filter((item) => item.name !== 'Asignaturas');
+        
+      }
+      
+      // Oculta el elemento "Registrar asistencia" si el usuario no es un "Docente"
+      if (!isEstudiante && this.componentes.some(item => item.name === 'Registrar Asistencia')) {
+        this.componentes = this.componentes.filter((item) => item.name !== 'Registrar Asistencia');
+        
       }
 
       this.componentes.unshift({
@@ -107,8 +123,9 @@ export class AppComponent {
       });
 
     } else if (!this.authService.IsLogged()) {
-      // Si el usuario no está autenticado, esconde asignaturas, recursos, home y cerrar sesión
-      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' && item.name !== 'Recursos' && item.name !== 'Perfil'  && item.name !== 'Cerrar sesión');
+      // Si el usuario no está autenticado, esconde acceso a pages.
+      this.componentes = this.componentes.filter((item) => item.name !== 'Home' && item.name !== 'Asignaturas' &&
+       item.name !== 'Recursos' && item.name !== 'Perfil' && item.name !== 'Registrar Asistencia'  && item.name !== 'Cerrar sesión');
       if (!this.componentes.some((item) => item.name === 'Iniciar sesión')) {
 
         // Si el usuario no está autenticado, muestra "Iniciar sesión" y "Crear cuenta" al menú

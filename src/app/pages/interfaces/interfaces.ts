@@ -6,13 +6,19 @@
 export interface Users {
   id: number;
   name: string;
-  role: string;
-  subject?: string[];
+  role: string; // Rol del usuario docente o estudiante
+  subject?: string[]; // Array de asignaturas
   username: string;
   email: string;
   password: string;
-  profilePicture?: string;
+  profilePicture?: string; // Imagen de perfil
 }
 
+export interface QrCodes { 
+  id: number;
+  name: string; // Nombre del docente que genera el QR
+  subject: string; // Nombre de la asignatura
+  dateTime: Date; // Fecha y hora del sistema
 
+}
 
