@@ -12,15 +12,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [style.--background]="scanActive ? 'transparent' : '#FFFFFF' ">
+
+  <div class="scan-box" *ngIf="scanActive">
     
+  </div>
+    
+  <ng-container *ngIf="!scanActive; else scanActiveTemplate">
+    <div class="botones">
+      <ion-button class="boton"  (click)="startScanner()">
+        <ion-icon slot="start" name="scan"></ion-icon>
+        Escanear QR
+      </ion-button>
 
-
-
-  <!-- Logo -->
+    </div>
+  </ng-container>
+  
+  <ng-template #scanActiveTemplate>
+    <ion-row class="scanner-buttons">
+      <ion-col class="ion-no-padding">
+        <div class="botones">
+          <ion-button class="boton" (click)="stopScanner()">
+            Detener Escaneo
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ng-template>
+ 
+  <!-- Logo
   <div class="asischeck-logo" style="text-align: center; justify-content: center;">
     <img src="assets/img/asischecklogo_text.png" alt="logo">
   </div>
-  <br>
+  <br> -->
 
 </ion-content>

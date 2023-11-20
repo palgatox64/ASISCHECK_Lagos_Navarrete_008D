@@ -35,37 +35,43 @@ ion-card-title{
 .boton {
   --background: #615ACDff;
   width: 70%;
-  margin-bottom: 70px; 
+
+
 }
 
-
-  .asischeck-logo{
-      width: 65%;
-      display: block;
-      margin: auto;
-      margin-top: 1%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding-bottom: 30px;
-    }
-
-.generar-qr {
+.botones {
+  justify-content: center;
+  text-align: center;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  padding-bottom: 80%;
+  padding-bottom: 35%;
 }
 
-.volver {
-  --background: #615ACDff;
+.scan-box {
+  border : 2px solid #fff;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  content: '';
+  display: block;
+  left: 50%;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}
+
+.asischeck-logo{
+  width: 65%;
+  display: block;
+  margin: auto;
+  margin-top: 1%;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  padding-bottom: 60%;
+  padding-bottom: 30px;
 }
 
 

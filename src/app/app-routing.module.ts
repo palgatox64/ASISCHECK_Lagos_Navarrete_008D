@@ -51,7 +51,8 @@ const routes: Routes = [
   {
     path: 'leer-qr',
     loadChildren: () => import('./pages/leer-qr/leer-qr.module').then( m => m.LeerQrPageModule),
-    canActivate: [AutorizadoGuard]
+    canActivate: [AutorizadoGuard],
+    data: { validarRol: 'Estudiante' }
 
   },
 

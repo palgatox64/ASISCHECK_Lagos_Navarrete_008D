@@ -1,0 +1,18 @@
+{
+  "archivos": [
+    {
+      "id": 1,
+      "titulo": "Getting Started with Python",
+      "tipo": "PDF",
+      "enlace": "https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/DEVNET-1893d.pdf",
+      "imagen": "https://i.imgur.com/aOL57Mp.png"
+    },
+    {
+      "id": 2,
+      "titulo": "The Oxford 3000",
+      "tipo": "PDF",
+      "enlace": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/American_Oxford_3000.pdf",
+      "imagen": "https://i.imgur.com/IaDTO3j.png"
+    }
+  ]
+}

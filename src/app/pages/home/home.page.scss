@@ -75,10 +75,13 @@ a {
       font-weight: bolder;
 }
 
-.idcard {
-  width: 65%;
-  display: block;
-  margin: auto;
+.pics {
+  position: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
 }
 
 @keyframes textclip {

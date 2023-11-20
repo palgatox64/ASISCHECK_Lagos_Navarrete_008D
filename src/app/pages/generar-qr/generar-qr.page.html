@@ -13,7 +13,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    
+    <!-- Logo -->
+    <div class="asischeck-logo" style="text-align: center; justify-content: center;">
+      <img src="assets/img/asischecklogo_text.png" alt="logo">
+    </div>
+  
   <!-- Contenedor del código QR con tamaño fijo -->
   <div class="qr-container" *ngIf="mostrarQR">
     <ion-card class="ion-text-center">
@@ -23,23 +27,22 @@
     </ion-card>
   </div>
 
+  
+
   <!-- Botón para generar el código QR -->
-  <ion-button class="generar-qr" (click)="generarQr()" color="success" shape="round">
-    Generar QR
-  </ion-button>
+  <div class="botones">
+    <ion-button class="generar-qr" (click)="generarQr()" color="success">
+      Generar QR
+    </ion-button>
 
-  <br>
+    <ion-button class="volver" (click)="volver()">
+      Volver
+    </ion-button>
+  </div>
 
-  <ion-button class="volver" (click)="volver()" shape="round">
-    Volver
-  </ion-button>
 
   <br><br>
 
-  <!-- Logo -->
-  <div class="asischeck-logo" style="text-align: center; justify-content: center;">
-    <img src="assets/img/asischecklogo_text.png" alt="logo">
-  </div>
-  <br>
+
 
 </ion-content>
