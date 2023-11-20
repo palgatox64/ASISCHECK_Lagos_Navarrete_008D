@@ -22,6 +22,14 @@ export interface QrCodes {
 
 }
 
+export interface Registros {
+  id: number;
+  idEstudiante: string; // ID del estudiante
+  name: string; // Nombre del estudiante
+  subject: string; // Nombre de la asignatura
+  dateTime: Date; // Fecha y hora del sistema
+}
+
 export interface Recursos {
   id: number;
   titulo: string;
