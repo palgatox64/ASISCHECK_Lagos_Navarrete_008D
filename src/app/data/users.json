@@ -1,54 +1,8 @@
 {
   "usuarios": [
-    {
-      "name": "Sebastian Navarrete",
-      "username": "se.navarrete",
-      "role": "Estudiante",
-      "password": "$2a$10$1SEB5Am34lNMgcewc/V9Q.ffyaJqgl/PdpwRw0M/4C8dCggoZZsRG",
-      "email": "se.navarrete@duocuc.cl",
-      "subject": [],
-      "profilePicture": "assets/img/unknown.jpg",
-      "id": 1
-    },
-    {
-      "name": "Wanolo Adidas",
-      "username": "wanolo.adidas",
-      "role": "Docente",
-      "password": "$2a$10$O.ARBBdzbZH4Qs1lM/ndFeu5Ev0U2CPzjxdUpdyFSqya9tUqWmHlK",
-      "email": "wanolito@gmail.com",
-      "subject": [
-        {
-          "id": 1,
-          "name": "PROGRAMACION DE APLICACIONES MOVILES",
-          "periodo": "2023-2",
-          "horario": "Lunes 8:00 - 10:00 | Jueves 8:00 - 10:00",
-          "image": "assets/img/appmovil.png"
-        },
-        {
-          "id": 2,
-          "name": "DESARROLLO FULL STACK",
-          "periodo": "2023-2",
-          "horario": "Martes 8:00 - 10:00 | Viernes 8:00 - 10:00",
-          "image": "assets/img/fullstack.png"
-        },
-        {
-          "id": 3,
-          "name": "PROGRAMACION DE BASE DE DATOS",
-          "periodo": "2023-2",
-          "horario": "Miercoles 8:00 - 10:00",
-          "image": "assets/img/database.png"
-        }
-      ],
-      "profilePicture": "assets/img/unknown.jpg",
-      "id": 2
-    }
+    
   ],
   "qr-codes": [
-    {
-      "id": 1,
-      "name": "Wanolo Adidas",
-      "subject": "DESARROLLO FULL STACK",
-      "dateTime": "2023-11-20T00:55:24.252Z"
-    }
+ 
   ]
 }

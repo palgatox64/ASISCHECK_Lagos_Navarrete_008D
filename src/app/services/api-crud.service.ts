@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Users, QrCodes } from '../pages/interfaces/interfaces';
+import { Users, QrCodes, Recursos } from '../pages/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 
@@ -36,6 +36,18 @@ export class ApiCrudService {
   CrearQrCode(newQrCode: QrCodes): Observable<QrCodes>{
     return this.httpclient.post<QrCodes>(`${environment.apiUrl}/qr-codes`, newQrCode);
 
+  }
+
+   // Método para obtener todos los recursos.
+  // Devuelve un observable de tipo `Recurso[]`.
+  ObtenerRecursos(): Observable<Recursos[]> {
+    return this.httpclient.get<Recursos[]>(`${environment.apiRecursos}/archivos`);
+  }
+
+  // Método para obtener un recurso por ID.
+  // Toma el ID del recurso y devuelve un observable de tipo `Recurso`.
+  ObtenerRecursoPorId(id: number): Observable<Recursos> {
+    return this.httpclient.get<Recursos>(`${environment.apiRecursos}/archivos/${id}`);
   }
 
 

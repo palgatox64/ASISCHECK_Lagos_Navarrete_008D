@@ -22,3 +22,10 @@ export interface QrCodes {
 
 }
 
+export interface Recursos {
+  id: number;
+  titulo: string;
+  tipo: string;
+  enlace: string;
+  imagen: string;
+}

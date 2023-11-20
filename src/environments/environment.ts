@@ -9,7 +9,7 @@ export const environment = {
   apiUrl: 'https://json.boukencraft.com',
 
   // Define la URL específica para obtener recursos en la API
-  apiRecursos: 'https://recursos.boukencraft.com/recursos'
+  apiRecursos: 'https://recursos.boukencraft.com'
 };
 
 /*
