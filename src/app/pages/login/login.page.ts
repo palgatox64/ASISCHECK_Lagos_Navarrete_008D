@@ -11,6 +11,8 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
+
 
 import * as bcrypt from 'bcryptjs';
 
@@ -49,7 +51,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authservice: AuthService,
     private toastController: ToastController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loadingController: LoadingController
   ) {
 
     // Crea un formulario con validadores
@@ -68,61 +71,71 @@ export class LoginPage implements OnInit {
     this.menuController.open('first');
   }
 
-  submitForm() {
+  async submitForm() {
     if (this.loginForm.valid) {
-      this.authservice
-        .GetUserById(this.loginForm.value.usuario)
-        .subscribe(async (resp) => {
-          // Realiza una solicitud para obtener datos de usuario
-          this.userdata = resp;
-          console.log(this.userdata);
-
-          if (this.userdata.length > 0) {
-            //si cumple la condición el objeto trae datos
-            this.usuario = {
-              //userdata llega en formato de arreglo
-              id: this.userdata[0].id,
-              name: this.userdata[0].name,
-              role: this.userdata[0].role,
-              username: this.userdata[0].username,
-              email: this.userdata[0].email,
-              subject: this.userdata[0].subject,
-              password: this.userdata[0].password,
-              profilePicture: this.userdata[0].profilePicture,
-              isactive: this.userdata[0].isactive,
-            };
-
-             // Utiliza bcryptjs para comparar contraseñas
-            const passwordMatch = await bcrypt.compare(
-              this.loginForm.value.contrasena,
-              this.usuario.password
-            );
-
-
-
-            if (passwordMatch) {
-              console.log('Usuario autenticado');
-              sessionStorage.setItem('id', this.usuario.id.toString());
-              sessionStorage.setItem('name', this.usuario.name);
-              sessionStorage.setItem('email', this.usuario.email);
-              sessionStorage.setItem('username', this.usuario.username);
-              sessionStorage.setItem('password', this.usuario.password);
-              sessionStorage.setItem('userrole', this.usuario.role);
-              sessionStorage.setItem('subject', JSON.stringify(this.usuario.subject));
-              sessionStorage.setItem('profilePicture', this.usuario.profilePicture);
-              sessionStorage.setItem('ingresado', 'true');
-              this.showToast('Sesión Iniciada');
-              this.authservice.setLoginStatus(true);
-              this.authservice.setLoggedUserName(this.usuario.username);
-              this.router.navigate(['/home']);
-            } else {
-              this.noCoincidePassword(); // Muestra un error si la contraseña no coincide
-            } 
+      const loading = await this.loadingController.create({
+        message: 'Iniciando sesión...',
+        translucent: true,
+        backdropDismiss: false,
+        duration: 5000, // Duración en milisegundos (en este caso, 5 segundos)
+      });
+  
+      try {
+        await loading.present(); // Presenta la pantalla de carga antes de la solicitud
+  
+        const resp = await this.authservice.GetUserById(this.loginForm.value.usuario).toPromise();
+  
+        // Realiza una solicitud para obtener datos de usuario
+        this.userdata = resp;
+        console.log(this.userdata);
+  
+        if (this.userdata.length > 0) {
+          // Si cumple la condición, el objeto trae datos
+          this.usuario = {
+            // UserData llega en formato de arreglo
+            id: this.userdata[0].id,
+            name: this.userdata[0].name,
+            role: this.userdata[0].role,
+            username: this.userdata[0].username,
+            email: this.userdata[0].email,
+            subject: this.userdata[0].subject,
+            password: this.userdata[0].password,
+            profilePicture: this.userdata[0].profilePicture,
+            isactive: this.userdata[0].isactive,
+          };
+  
+          // Utiliza bcryptjs para comparar contraseñas
+          const passwordMatch = await bcrypt.compare(
+            this.loginForm.value.contrasena,
+            this.usuario.password
+          );
+  
+          if (passwordMatch) {
+            console.log('Usuario autenticado');
+            sessionStorage.setItem('id', this.usuario.id.toString());
+            sessionStorage.setItem('name', this.usuario.name);
+            sessionStorage.setItem('email', this.usuario.email);
+            sessionStorage.setItem('username', this.usuario.username);
+            sessionStorage.setItem('password', this.usuario.password);
+            sessionStorage.setItem('userrole', this.usuario.role);
+            sessionStorage.setItem('subject', JSON.stringify(this.usuario.subject));
+            sessionStorage.setItem('profilePicture', this.usuario.profilePicture);
+            sessionStorage.setItem('ingresado', 'true');
+            this.authservice.setLoginStatus(true);
+            this.authservice.setLoggedUserName(this.usuario.username);
+            this.router.navigate(['/home']);
           } else {
-            this.noExisteUsuario(); // Muestra un error si el usuario no existe
-            this.loginForm.reset();
+            this.noCoincidePassword(); // Muestra un error si la contraseña no coincide
           }
-        });
+        } else {
+          this.noExisteUsuario(); // Muestra un error si el usuario no existe
+          this.loginForm.reset();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        await loading.dismiss(); // Siempre cierra la pantalla de carga, incluso en caso de error
+      }
     }
   }
 

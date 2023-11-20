@@ -47,42 +47,48 @@ export class GenerarQrPage implements OnInit {
     this.ocultarQR();
   }
 
-  generarQr() {
+  async generarQr() {
+    const loading = await this.loadingController.create({
+      message: 'Generando QR...',
+      translucent: true,
+      backdropDismiss: false,
+      duration: 5000,
+    });
 
-    this.newQrCode.name = this.nombreUsuario;
-    this.newQrCode.dateTime = new Date(); 
-     // Recupera el objeto asignaturaQr del sessionStorage
-     const asignaturaQrString = sessionStorage.getItem('asignaturaQr');
+    try {
+      await loading.present(); // Presenta la pantalla de carga antes de la solicitud
 
-     if (asignaturaQrString) {
-       // Parsea el objeto asignaturaQrString a un objeto JavaScript
-       const asignaturaQr = JSON.parse(asignaturaQrString);
- 
-       // Verifica si la propiedad 'name' está presente antes de asignarla
-       if (asignaturaQr && asignaturaQr.name) {
-         this.newQrCode.subject = asignaturaQr.name;
-       }
-     }
+      this.newQrCode.name = this.nombreUsuario;
+      this.newQrCode.dateTime = new Date();
+      const asignaturaQrString = sessionStorage.getItem('asignaturaQr');
 
-    const uniqueId = uuidv4();
-
-
-
-    this.apiCrud.CrearQrCode(this.newQrCode).subscribe(
-      (response) => {
-        console.log('QR creado exitosamente', response);
-        this.data.texto = response.subject + '_' + uniqueId ;
-        this.mensaje=this.data.texto;
-        this.mostrarQR = true;
-        this.mostrarMensaje('QR creado exitosamente', 'Se ha almacenado el QR');
-      },
-      (error) => {
-        console.error('Error al crear el QR', error);
-        this.mostrarMensaje('Error', 'Hubo un error al crear el QR');
-        // Maneja el error según tus necesidades
+      if (asignaturaQrString) {
+        const asignaturaQr = JSON.parse(asignaturaQrString);
+        if (asignaturaQr && asignaturaQr.name) {
+          this.newQrCode.subject = asignaturaQr.name;
+        }
       }
-    );
 
+      const uniqueId = uuidv4();
+
+      this.apiCrud.CrearQrCode(this.newQrCode).subscribe(
+        (response) => {
+          console.log('QR creado exitosamente', response);
+          this.data.texto = response.subject + '_' + uniqueId;
+          this.mensaje = this.data.texto;
+          this.mostrarQR = true;
+          this.mostrarMensaje('QR creado exitosamente', 'Se ha almacenado el QR');
+        },
+        (error) => {
+          console.error('Error al crear el QR', error);
+          this.mostrarMensaje('Error', 'Hubo un error al crear el QR');
+        }
+      );
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      await loading.dismiss(); // Siempre cierra la pantalla de carga, incluso en caso de error
+    }
   }
 
   mostrarMenu() {
