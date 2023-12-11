@@ -77,7 +77,18 @@ export class AuthService {
   IsNotLogged() {
     return !this.IsLogged(); // Devuelve true si el usuario no está autenticado, de lo contrario, devuelve false.
   }
-  
+
+  // Verifica si el correo electrónico existe en el JSON de usuarios
+  isEmailRegistered(email: string): Observable<boolean> {
+    return this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios/?email=${email}`).pipe(
+      map(users => {
+        const isRegistered = users.some(user => user.email === email);
+        console.log(`Correo electrónico ${email} registrado: ${isRegistered}`);
+        return isRegistered;
+      })
+    );
+  }
+
   logout() {
     // Elimina los datos de la sesión en sessionStorage
     sessionStorage.removeItem('id');

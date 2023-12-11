@@ -172,4 +172,55 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+
+  async olvidarContrasena() {
+    const alert = await this.alertController.create({
+      header: 'Recuperar Contraseña',
+      message: 'Ingrese su dirección de correo electrónico para recibir un enlace de recuperación.',
+      inputs: [
+        {
+          name: 'email',
+          type: 'email',
+          placeholder: 'Correo Electrónico'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+        },
+        {
+          text: 'Enviar',
+          handler: async (data) => {
+            console.log('Verificando si el correo electrónico está registrado...');
+            this.authservice.isEmailRegistered(data.email).subscribe(isEmailRegistered => {
+              console.log('Resultado de la verificación:', isEmailRegistered);
+  
+              if (isEmailRegistered) {
+                console.log('Enviando correo de recuperación a:', data.email);
+                this.mostrarAlerta('Correo Electrónico Enviado', 'Se ha enviado un correo electrónico a la dirección ingresada con un enlace para restablecer su contraseña.');
+              } else {
+                console.log('El correo electrónico no está registrado.');
+                this.mostrarAlerta('Correo Electrónico no registrado', 'El correo electrónico ingresado no está registrado en nuestro sistema.');
+              }
+            });
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
+
+  async mostrarAlerta(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
+
 }

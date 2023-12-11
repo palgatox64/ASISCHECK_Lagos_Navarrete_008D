@@ -40,7 +40,7 @@
       <ion-button class="submit ion-text-uppercase" type="submit" [disabled]="!loginForm.valid"  expand="block">Ingresar</ion-button>
       
       <div class="links">
-        <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)">Recupérela aquí</a></p>
+        <p class="forgot-password">¿Olvidó su contraseña? <a href="javascript:void(0)" (click)="olvidarContrasena()">Recupérela aquí</a></p>
 
         <p class="sign-up">¿No dispone de una cuenta? <a routerLink="/register">Regístrese aquí</a> </p>
       </div>
