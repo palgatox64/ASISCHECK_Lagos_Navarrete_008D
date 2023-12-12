@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+
+
 
 
 import * as bcrypt from 'bcryptjs';
@@ -52,7 +55,8 @@ export class LoginPage implements OnInit {
     private authservice: AuthService,
     private toastController: ToastController,
     private formBuilder: FormBuilder,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private httpclient: HttpClient
   ) {
 
     // Crea un formulario con validadores
@@ -199,7 +203,20 @@ export class LoginPage implements OnInit {
   
               if (isEmailRegistered) {
                 console.log('Enviando correo de recuperación a:', data.email);
-                this.mostrarAlerta('Correo Electrónico Enviado', 'Se ha enviado un correo electrónico a la dirección ingresada con un enlace para restablecer su contraseña.');
+  
+                // Realiza una solicitud HTTP al servidor para enviar el correo
+                this.httpclient.post('https://email.boukencraft.com/enviar-correo', {
+                  destinatario: data.email,
+                  asunto: 'Recuperación de Contraseña',
+                  contenido: 'Haz clic en el enlace para restablecer tu contraseña.'
+                }).subscribe(response => {
+                  console.log('Respuesta del servidor:', response);
+                  this.mostrarAlerta('Correo Electrónico Enviado', 'Se ha enviado un correo electrónico a la dirección ingresada con un enlace para restablecer su contraseña.');
+                }, error => {
+                  console.error('Error al enviar la solicitud HTTP:', error);
+                  this.mostrarAlerta('Error', 'Error al enviar el correo electrónico');
+                });
+  
               } else {
                 console.log('El correo electrónico no está registrado.');
                 this.mostrarAlerta('Correo Electrónico no registrado', 'El correo electrónico ingresado no está registrado en nuestro sistema.');
@@ -212,6 +229,7 @@ export class LoginPage implements OnInit {
   
     await alert.present();
   }
+  
 
   async mostrarAlerta(header: string, message: string) {
     const alert = await this.alertController.create({
