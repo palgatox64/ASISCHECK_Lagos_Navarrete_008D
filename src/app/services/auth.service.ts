@@ -109,7 +109,7 @@ export class AuthService {
       if (email) {
         console.log('Correo electrónico obtenido:', email);
       } else {
-        console.log('No se pudo obtener el correo electrónico desde el token.');
+        console.log('El correo no coincide con la solicitud.');
       }
   
       return email;

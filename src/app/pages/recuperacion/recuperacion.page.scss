@@ -30,7 +30,7 @@ ion-item {
 .submit {
   margin-top: 5%;
   margin-bottom: 0;
-  padding: 5%;
+  padding: 2%;
   --background: #615ACDff;
   font-weight: bold;
 }
@@ -57,4 +57,12 @@ ion-item {
 
 a {
 text-decoration: none;
+}
+
+.recuperar-contrasena-container {
+  position: absolute;
+  width: 100%;
+  top: 55%;
+  left: 55%;
+  transform: translate(-55%, -55%);
 }

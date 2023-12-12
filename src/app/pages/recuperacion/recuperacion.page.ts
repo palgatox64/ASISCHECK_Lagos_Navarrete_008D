@@ -15,6 +15,12 @@ export class RecuperacionPage implements OnInit {
   cambiarContrasenaForm: FormGroup;
   token: string = '';
 
+  showPassword: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -45,28 +51,31 @@ export class RecuperacionPage implements OnInit {
   async submitForm() {
     if (this.cambiarContrasenaForm.valid) {
       const nuevaContrasena = this.cambiarContrasenaForm.value.nuevaContrasena;
-
-
-      // Obtener el correo electrónico desde el token
-      const email = this.authservice.obtenerEmailDesdeToken(this.token, this.cambiarContrasenaForm.value.correoElectronico);
-
-
-      if (email) {
-        // Llamar al servicio para cambiar la contraseña
-        this.authservice.cambiarContrasena(email, nuevaContrasena).subscribe(
-          () => {
-            // Mostrar mensaje de éxito
-            this.mostrarAlerta('Contraseña Cambiada', 'La contraseña se cambió con éxito.');
-            // Redireccionar al login u otra página
-            this.router.navigate(['/login']);
-          },
-          error => {
-            console.error('Error al cambiar la contraseña:', error);
-            this.mostrarAlerta('Error', 'Hubo un error al cambiar la contraseña. Por favor, inténtalo nuevamente.');
-          }
-        );
+      const confirmarContrasena = this.cambiarContrasenaForm.value.confirmarContrasena;
+  
+      if (nuevaContrasena === confirmarContrasena) {
+        // Obtener el correo electrónico desde el token
+        const email = this.authservice.obtenerEmailDesdeToken(this.token, this.cambiarContrasenaForm.value.correoElectronico);
+  
+        if (email) {
+          // Llamar al servicio para cambiar la contraseña
+          this.authservice.cambiarContrasena(email, nuevaContrasena).subscribe(
+            () => {
+              // Mostrar mensaje de éxito
+              this.mostrarAlerta('Contraseña Cambiada', 'La contraseña se cambió con éxito.');
+              // Redireccionar al login u otra página
+              this.router.navigate(['/login']);
+            },
+            error => {
+              console.error('Error al cambiar la contraseña:', error);
+              this.mostrarAlerta('Error', 'Hubo un error al cambiar la contraseña. Por favor, inténtalo nuevamente.');
+            }
+          );
+        } else {
+          this.mostrarAlerta('Error', 'El correo ingresado no coincide con la solicitud.');
+        }
       } else {
-        this.mostrarAlerta('Error', 'No se pudo obtener el correo electrónico desde el token.');
+        this.mostrarAlerta('Error', 'Las contraseñas no coinciden. Por favor, verifica.');
       }
     }
   }
