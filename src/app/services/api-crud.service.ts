@@ -26,6 +26,12 @@ export class ApiCrudService {
     return this.httpclient.post<Users>(`${environment.apiUrl}/usuarios`, newUsuario);
   }
 
+  CambiarContrasenaUsuario(id: number, nuevaContrasena: string): Observable<any> {
+    const body = { password: nuevaContrasena };
+
+    return this.httpclient.put<any>(`${environment.apiUrl}/usuarios/${id}/cambiar-contrasena`, body);
+  }
+
   // Método para actualizar los datos del usuario.
   // Toma el ID del usuario y un objeto `datosActualizados` de tipo `Users`.
   // Devuelve un observable de tipo `Users`.
@@ -53,6 +59,8 @@ export class ApiCrudService {
   ObtenerRecursoPorId(id: number): Observable<Recursos> {
     return this.httpclient.get<Recursos>(`${environment.apiRecursos}/archivos/${id}`);
   }
+
+
 
 
 }

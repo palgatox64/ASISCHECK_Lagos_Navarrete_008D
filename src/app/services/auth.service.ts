@@ -93,11 +93,59 @@ export class AuthService {
   }
 
   generateToken(email: string): string {
-    // Concatena el correo electrónico con la clave secreta y realiza el hash
-    const tokenData = email + this.secretKey;
-    const hashedToken = bcrypt.hashSync(tokenData, 10);
-
+    // Realiza el hash del correo electrónico sin agregar la clave secreta
+    const hashedToken = bcrypt.hashSync(email, 10);
+  
     return hashedToken;
+  }
+
+  obtenerEmailDesdeToken(token: string, correoElectronico: string): string | null {
+    try {
+      console.log('Token recibido:', token);
+  
+      // Desencripta el token utilizando el correo electrónico (sin agregar la clave secreta)
+      const email = bcrypt.compareSync(correoElectronico, token) ? correoElectronico : null;
+  
+      if (email) {
+        console.log('Correo electrónico obtenido:', email);
+      } else {
+        console.log('No se pudo obtener el correo electrónico desde el token.');
+      }
+  
+      return email;
+    } catch (error) {
+      console.error('Error al obtener el correo electrónico desde el token:', error);
+      return null;
+    }
+  }
+
+  cambiarContrasena(correoElectronico: string, nuevaContrasena: string): Observable<any> {
+    // Primero, obtenemos la lista de usuarios
+    this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios`).subscribe(users => {
+      // Buscamos al usuario con el correo electrónico proporcionado
+      const usuario = users.find(user => user.email === correoElectronico);
+
+      if (usuario) {
+        // Actualizamos la contraseña del usuario encontrado
+        usuario.password = bcrypt.hashSync(nuevaContrasena, 10);
+
+        // Luego, realizamos la actualización en el servidor
+        this.httpclient.put(`${environment.apiUrl}/usuarios/${usuario.id}`, usuario).subscribe(
+          () => {
+            console.log('Contraseña actualizada con éxito');
+            // Puedes realizar acciones adicionales después de cambiar la contraseña, si es necesario
+          },
+          error => {
+            console.error('Error al actualizar la contraseña:', error);
+          }
+        );
+      } else {
+        console.error('Usuario no encontrado con el correo electrónico proporcionado.');
+      }
+    });
+
+    // Puedes devolver un Observable con información adicional si es necesario
+    return of({ message: 'Cambio de contraseña en proceso' });
   }
 
   logout() {
