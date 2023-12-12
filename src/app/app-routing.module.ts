@@ -54,7 +54,11 @@ const routes: Routes = [
     canActivate: [AutorizadoGuard],
     data: { validarRol: 'Estudiante' }
 
+  },  {
+    path: 'recuperacion',
+    loadChildren: () => import('./pages/recuperacion/recuperacion.module').then( m => m.RecuperacionPageModule)
   },
+
 
 
 

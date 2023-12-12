@@ -7,12 +7,15 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';  // Agrega esta línea
+import * as bcrypt from 'bcryptjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private secretKey = 'teamasischeck';
 
   private isLoggedInSubject = new Subject<boolean>();
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -77,7 +80,74 @@ export class AuthService {
   IsNotLogged() {
     return !this.IsLogged(); // Devuelve true si el usuario no está autenticado, de lo contrario, devuelve false.
   }
+
+  // Verifica si el correo electrónico existe en el JSON de usuarios
+  isEmailRegistered(email: string): Observable<boolean> {
+    return this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios/?email=${email}`).pipe(
+      map(users => {
+        const isRegistered = users.some(user => user.email === email);
+        console.log(`Correo electrónico ${email} registrado: ${isRegistered}`);
+        return isRegistered;
+      })
+    );
+  }
+
+  generateToken(email: string): string {
+    // Realiza el hash del correo electrónico sin agregar la clave secreta
+    const hashedToken = bcrypt.hashSync(email, 10);
   
+    return hashedToken;
+  }
+
+  obtenerEmailDesdeToken(token: string, correoElectronico: string): string | null {
+    try {
+      console.log('Token recibido:', token);
+  
+      // Desencripta el token utilizando el correo electrónico (sin agregar la clave secreta)
+      const email = bcrypt.compareSync(correoElectronico, token) ? correoElectronico : null;
+  
+      if (email) {
+        console.log('Correo electrónico obtenido:', email);
+      } else {
+        console.log('El correo no coincide con la solicitud.');
+      }
+  
+      return email;
+    } catch (error) {
+      console.error('Error al obtener el correo electrónico desde el token:', error);
+      return null;
+    }
+  }
+
+  cambiarContrasena(correoElectronico: string, nuevaContrasena: string): Observable<any> {
+    // Primero, obtenemos la lista de usuarios
+    this.httpclient.get<Users[]>(`${environment.apiUrl}/usuarios`).subscribe(users => {
+      // Buscamos al usuario con el correo electrónico proporcionado
+      const usuario = users.find(user => user.email === correoElectronico);
+
+      if (usuario) {
+        // Actualizamos la contraseña del usuario encontrado
+        usuario.password = bcrypt.hashSync(nuevaContrasena, 10);
+
+        // Luego, realizamos la actualización en el servidor
+        this.httpclient.put(`${environment.apiUrl}/usuarios/${usuario.id}`, usuario).subscribe(
+          () => {
+            console.log('Contraseña actualizada con éxito');
+            // Puedes realizar acciones adicionales después de cambiar la contraseña, si es necesario
+          },
+          error => {
+            console.error('Error al actualizar la contraseña:', error);
+          }
+        );
+      } else {
+        console.error('Usuario no encontrado con el correo electrónico proporcionado.');
+      }
+    });
+
+    // Puedes devolver un Observable con información adicional si es necesario
+    return of({ message: 'Cambio de contraseña en proceso' });
+  }
+
   logout() {
     // Elimina los datos de la sesión en sessionStorage
     sessionStorage.removeItem('id');
