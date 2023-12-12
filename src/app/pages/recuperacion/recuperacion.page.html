@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="regresarALogin()">
+        <ion-icon class="back-icon" slot="icon-only" name="arrow-back-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titulo">
+      <ion-title>Cambiar Contraseña</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="recuperar-contrasena-content">
+
+  <div class="recuperar-contrasena-container">
+    <form [formGroup]="cambiarContrasenaForm" (ngSubmit)="submitForm()">
+      <ion-item class="password">
+        <ion-icon class="recuperar-contrasena-icon" name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="password" [autofocus]="false" formControlName="nuevaContrasena" placeholder="Nueva Contraseña"></ion-input>
+      </ion-item>
+
+      <ion-item class="confirm-password">
+        <ion-icon class="recuperar-contrasena-icon" name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label></ion-label>
+        <ion-input type="password" [autofocus]="false" formControlName="confirmarContrasena" placeholder="Confirmar Contraseña"></ion-input>
+      </ion-item>
+
+      <ion-button class="submit ion-text-uppercase" type="submit" [disabled]="!cambiarContrasenaForm.valid" expand="block">Cambiar Contraseña</ion-button>
+    </form>
+  </div>
+
+</ion-content>

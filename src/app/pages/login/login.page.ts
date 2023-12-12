@@ -203,15 +203,31 @@ export class LoginPage implements OnInit {
   
               if (isEmailRegistered) {
                 console.log('Enviando correo de recuperación a:', data.email);
+
+                  // Genera un token único para el enlace de recuperación
+                const recoveryToken = this.generateRecoveryToken();
+
+                // Construye el enlace con el token y la dirección de cambio de contraseña
+                const recoveryLink = `http://localhost:8100/recuperacion?token=${recoveryToken}`;
+
+                // Cuerpo del correo con el enlace de recuperación
+                const emailBody = `Haz clic en el siguiente enlace para restablecer tu contraseña: ${recoveryLink}`;
+
   
                 // Realiza una solicitud HTTP al servidor para enviar el correo
                 this.httpclient.post('https://email.boukencraft.com/enviar-correo', {
                   destinatario: data.email,
                   asunto: 'Recuperación de Contraseña',
-                  contenido: 'Haz clic en el enlace para restablecer tu contraseña.'
-                }).subscribe(response => {
+                  contenido: emailBody
+                }, { responseType: 'text' }).subscribe(response => {
                   console.log('Respuesta del servidor:', response);
-                  this.mostrarAlerta('Correo Electrónico Enviado', 'Se ha enviado un correo electrónico a la dirección ingresada con un enlace para restablecer su contraseña.');
+
+                  // Verifica si la respuesta es válida (puedes personalizar esta lógica según el contenido del texto)
+                  if (response.includes('Correo electrónico enviado con éxito')) {
+                    this.mostrarAlerta('Correo Electrónico Enviado', 'Se ha enviado un correo electrónico a la dirección ingresada con un enlace para restablecer su contraseña.');
+                  } else {
+                    this.mostrarAlerta('Error', 'Error al enviar el correo electrónico');
+                  }
                 }, error => {
                   console.error('Error al enviar la solicitud HTTP:', error);
                   this.mostrarAlerta('Error', 'Error al enviar el correo electrónico');
@@ -239,6 +255,14 @@ export class LoginPage implements OnInit {
     });
   
     await alert.present();
+  }
+
+  generateRecoveryToken() {
+    // Aquí debes implementar la lógica para generar un token único
+    // Puedes usar bibliotecas como 'crypto' o 'jsonwebtoken' para esto
+    // Ejemplo básico (no utilizar en producción):
+    const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    return token;
   }
 
 }
