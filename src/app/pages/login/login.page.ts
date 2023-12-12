@@ -206,7 +206,7 @@ export class LoginPage implements OnInit {
                 const recoveryToken = this.authservice.generateToken(data.email);
 
                 // Construye el enlace con el token y la dirección de cambio de contraseña
-                const recoveryLink = `http://localhost:8100/recuperacion?token=${recoveryToken}`;
+                const recoveryLink = `https://passwordreset.boukencraft.com/recuperacion?token=${recoveryToken}`;
 
                 // Cuerpo del correo con el enlace de recuperación
                 const emailBody = `Haz clic en el siguiente enlace para restablecer tu contraseña: ${recoveryLink}`;

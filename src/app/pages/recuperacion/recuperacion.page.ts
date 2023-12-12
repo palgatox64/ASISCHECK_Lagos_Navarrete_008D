@@ -62,9 +62,7 @@ export class RecuperacionPage implements OnInit {
           this.authservice.cambiarContrasena(email, nuevaContrasena).subscribe(
             () => {
               // Mostrar mensaje de éxito
-              this.mostrarAlerta('Contraseña Cambiada', 'La contraseña se cambió con éxito.');
-              // Redireccionar al login u otra página
-              this.router.navigate(['/login']);
+              this.mostrarAlerta('Contraseña Cambiada', 'La contraseña se cambió con éxito. Puede cerrar esta ventana.');
             },
             error => {
               console.error('Error al cambiar la contraseña:', error);
