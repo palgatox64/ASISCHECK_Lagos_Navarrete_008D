@@ -15,8 +15,6 @@ import { LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 
-
-
 import * as bcrypt from 'bcryptjs';
 
 
@@ -204,8 +202,8 @@ export class LoginPage implements OnInit {
               if (isEmailRegistered) {
                 console.log('Enviando correo de recuperación a:', data.email);
 
-                  // Genera un token único para el enlace de recuperación
-                const recoveryToken = this.generateRecoveryToken();
+                // Genera un token único para el enlace de recuperación utilizando el servicio TokenService
+                const recoveryToken = this.authservice.generateToken(data.email);
 
                 // Construye el enlace con el token y la dirección de cambio de contraseña
                 const recoveryLink = `http://localhost:8100/recuperacion?token=${recoveryToken}`;
@@ -245,6 +243,8 @@ export class LoginPage implements OnInit {
   
     await alert.present();
   }
+
+  
   
 
   async mostrarAlerta(header: string, message: string) {
@@ -257,12 +257,7 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  generateRecoveryToken() {
-    // Aquí debes implementar la lógica para generar un token único
-    // Puedes usar bibliotecas como 'crypto' o 'jsonwebtoken' para esto
-    // Ejemplo básico (no utilizar en producción):
-    const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    return token;
-  }
+
+
 
 }

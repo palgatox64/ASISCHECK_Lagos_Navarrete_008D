@@ -7,12 +7,15 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';  // Agrega esta línea
+import * as bcrypt from 'bcryptjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private secretKey = 'teamasischeck';
 
   private isLoggedInSubject = new Subject<boolean>();
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -87,6 +90,14 @@ export class AuthService {
         return isRegistered;
       })
     );
+  }
+
+  generateToken(email: string): string {
+    // Concatena el correo electrónico con la clave secreta y realiza el hash
+    const tokenData = email + this.secretKey;
+    const hashedToken = bcrypt.hashSync(tokenData, 10);
+
+    return hashedToken;
   }
 
   logout() {
